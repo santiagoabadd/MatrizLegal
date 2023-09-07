@@ -46,6 +46,10 @@ public class ApplicationUser {
 
     private Boolean enabled;
 
+    @ManyToOne
+    @JoinColumn(name="customer_id")
+    Customer customer;
+
     @Column(nullable = true)
     @JsonIgnore
     private Long verification;
