@@ -9,7 +9,7 @@ import java.util.Set;
 @Entity
 @Table(name="customers")
 public class Customer {
-@Id
+    @Id
     @Column(name="customer_id")
     private Integer customerId;
     @Column(name = "company")
@@ -21,6 +21,11 @@ public class Customer {
 
     @OneToMany(mappedBy = "customer",cascade= CascadeType.ALL,orphanRemoval = true)
     Set<Requirement> requirements;
+
+    @OneToMany(mappedBy = "customer",cascade= CascadeType.ALL,orphanRemoval = true)
+    Set<Plant> plant;
+
+
     public Customer() {
         this.users = new HashSet<>();
         this.enabled=false;

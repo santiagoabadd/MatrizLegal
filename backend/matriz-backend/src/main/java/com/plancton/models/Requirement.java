@@ -2,6 +2,8 @@ package com.plancton.models;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name="requirements")
 public class Requirement {
@@ -25,6 +27,16 @@ public class Requirement {
     @JoinColumn(name="customer_id")
     Customer customer;
 
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    Category category;
+
+    @ManyToOne
+    @JoinColumn(name="plant_id")
+    Plant plant;
+
+    @OneToMany(mappedBy = "requirement",cascade= CascadeType.ALL,orphanRemoval = true)
+    Set<Action> actions;
 
     public Requirement() {
     }

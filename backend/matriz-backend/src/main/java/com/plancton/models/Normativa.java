@@ -2,6 +2,8 @@ package com.plancton.models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name="normativa")
 public class Normativa {
@@ -31,12 +33,17 @@ public class Normativa {
     @Column(name = "current",nullable = false)
     private boolean current;
 
+
+
+
+
+
     public Normativa() {
         super();
     }
 
-    public Normativa(Integer normativaId, String precioBase, String title, String authority, String category, String organism, String jurisdiction, boolean current) {
-        this.normativaId = normativaId;
+    public Normativa(String precioBase, String title, String authority, String category, String organism, String jurisdiction, boolean current) {
+
         this.precioBase = precioBase;
         this.title = title;
         this.authority = authority;
