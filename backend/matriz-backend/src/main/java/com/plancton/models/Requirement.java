@@ -7,7 +7,8 @@ import java.util.Set;
 @Entity
 @Table(name="requirements")
 public class Requirement {
-@Id
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="requirement_id")
     private Integer requirementId;
     @Column(name="title")
@@ -37,6 +38,9 @@ public class Requirement {
 
     @OneToMany(mappedBy = "requirement",cascade= CascadeType.ALL,orphanRemoval = true)
     Set<Action> actions;
+
+    @OneToMany(mappedBy = "requirement",cascade= CascadeType.ALL,orphanRemoval = true)
+    Set<Normativa> normativas;
 
     public Requirement() {
     }
@@ -103,5 +107,29 @@ public class Requirement {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Plant getPlant() {
+        return plant;
+    }
+
+    public void setPlant(Plant plant) {
+        this.plant = plant;
+    }
+
+    public Set<Action> getActions() {
+        return actions;
+    }
+
+    public void setActions(Set<Action> actions) {
+        this.actions = actions;
     }
 }

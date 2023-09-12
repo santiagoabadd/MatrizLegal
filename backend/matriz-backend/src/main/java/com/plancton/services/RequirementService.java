@@ -30,6 +30,10 @@ public class RequirementService {
         return  requirementRepo.findAll();
     }
 
+    public Requirement getById(Integer id){
+        return  requirementRepo.getById(id);
+    }
+
     public Requirement updateCustomer(Requirement requirement){
         try{
             return requirementRepo.save(requirement);

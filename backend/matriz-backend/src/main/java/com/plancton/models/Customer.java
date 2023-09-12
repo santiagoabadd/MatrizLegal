@@ -10,6 +10,7 @@ import java.util.Set;
 @Table(name="customers")
 public class Customer {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="customer_id")
     private Integer customerId;
     @Column(name = "company")

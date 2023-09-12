@@ -8,6 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface RequirementRepository extends JpaRepository<Requirement,Integer>{
-    Optional<Requirement> findByTitle(String title);
+
 
 }

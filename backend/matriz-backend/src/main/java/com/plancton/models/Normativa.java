@@ -34,7 +34,9 @@ public class Normativa {
     private boolean current;
 
 
-
+    @ManyToOne
+    @JoinColumn(name="requirement_id")
+    Requirement requirement;
 
 
 
