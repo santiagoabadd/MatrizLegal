@@ -33,7 +33,7 @@ public class ApplicationUser {
     @JsonIgnore
     private String password;
 
-
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_role_junction",

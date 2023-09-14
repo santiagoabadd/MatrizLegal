@@ -1,11 +1,14 @@
 package com.plancton.models;
 
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name="requirements")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "requirementId")
 public class Requirement {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,20 +32,33 @@ public class Requirement {
     Customer customer;
 
     @ManyToOne
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name="category_id")
     Category category;
 
     @ManyToOne
     @JoinColumn(name="plant_id")
     Plant plant;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "requirement",cascade= CascadeType.ALL,orphanRemoval = true)
     Set<Action> actions;
 
-    @OneToMany(mappedBy = "requirement",cascade= CascadeType.ALL,orphanRemoval = true)
-    Set<Normativa> normativas;
+
+
+
 
     public Requirement() {
+    }
+
+    public Requirement(String title, String actualState, String requirement, String type, String compliance, String relevance, Customer customer, Category category, Plant plant) {
+        this.title = title;
+        this.actualState = actualState;
+        this.requirement = requirement;
+        this.type = type;
+        this.compliance = compliance;
+        this.relevance = relevance;
+        this.customer = customer;
+        this.category = category;
+        this.plant = plant;
     }
 
     public Integer getRequirementId() {
@@ -128,6 +144,10 @@ public class Requirement {
     public Set<Action> getActions() {
         return actions;
     }
+
+
+
+
 
     public void setActions(Set<Action> actions) {
         this.actions = actions;

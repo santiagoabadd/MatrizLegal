@@ -25,6 +25,12 @@ public class CategoryService {
             return null;
         }
     }
+    public void deleteById(Integer id){
+        categoryRepo.deleteById(id);
+    }
+    public Category getById(Integer id){
+        return  categoryRepo.getById(id);
+    }
 
     public List<Category> getAll(){
         return  categoryRepo.findAll();

@@ -1,6 +1,7 @@
 package com.plancton.models;
 
 
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -8,6 +9,7 @@ import java.util.Set;
 
 @Entity
 @Table(name="plant")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "plantId")
 public class Plant {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,17 +36,40 @@ public class Plant {
     @ManyToOne
     @JoinColumn(name="customer_id")
     Customer customer;
+
+    @JsonIgnore
     @OneToMany(mappedBy = "plant",cascade= CascadeType.ALL,orphanRemoval = true)
     Set<Requirement> requirements;
 
+    public Plant(){}
 
-    public Plant(String name, String description, LocalDate fechaAlta, String jurisdiction, boolean active, String estado) {
+
+    public Plant(String name, String description, LocalDate fechaAlta, String jurisdiction, boolean active, String estado, Customer customer) {
+
         this.name = name;
         this.description = description;
         this.fechaAlta = fechaAlta;
         this.jurisdiction = jurisdiction;
         this.active = active;
         this.estado = estado;
+        this.customer = customer;
+
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Set<Requirement> getRequirements() {
+        return requirements;
+    }
+
+    public void setRequirements(Set<Requirement> requirements) {
+        this.requirements = requirements;
     }
 
     public Integer getPlantId() {

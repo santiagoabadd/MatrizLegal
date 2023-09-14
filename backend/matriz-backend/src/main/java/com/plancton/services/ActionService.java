@@ -27,7 +27,9 @@ public class ActionService {
     public List<Action> getAll(){
         return  actionRepo.findAll();
     }
-
+    public void deleteById(Integer id){
+        actionRepo.deleteById(id);
+    }
     public Action updateAction(Action action){
         try{
             return actionRepo.save(action);

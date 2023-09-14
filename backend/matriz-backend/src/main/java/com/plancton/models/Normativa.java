@@ -1,11 +1,15 @@
 package com.plancton.models;
 
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="normativa")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "normativaId")
 public class Normativa {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -13,7 +17,7 @@ public class Normativa {
     private Integer normativaId;
 
     @Column(name="norma",length = 60,nullable = false)
-    private String precioBase;
+    private String norma;
 
     @Column(name="title",length = 60,nullable = false)
     private String title;
@@ -21,8 +25,7 @@ public class Normativa {
     @Column(name="authority",length = 60,nullable = false)
     private String authority;
 
-    @Column(name="category",length = 60,nullable = false)
-    private String category;
+
 
     @Column(name="organism",length = 60,nullable = false)
     private String organism;
@@ -32,11 +35,19 @@ public class Normativa {
 
     @Column(name = "current",nullable = false)
     private boolean current;
+    @JsonIgnore
+    @ManyToMany
+    @JoinTable(
+            name = "normativa_rubro",
+            joinColumns = @JoinColumn(name = "normativa_id"),
+            inverseJoinColumns = @JoinColumn(name = "rubro_id")
+    )
+    private Set<Rubro> rubroList = new HashSet<>();
 
 
     @ManyToOne
-    @JoinColumn(name="requirement_id")
-    Requirement requirement;
+    @JoinColumn(name="category_id")
+    Category category;
 
 
 
@@ -44,15 +55,26 @@ public class Normativa {
         super();
     }
 
-    public Normativa(String precioBase, String title, String authority, String category, String organism, String jurisdiction, boolean current) {
+    public Normativa(String norma, String title, String authority,String organism, String jurisdiction, boolean current,Category category) {
 
-        this.precioBase = precioBase;
+        this.norma = norma;
         this.title = title;
         this.authority = authority;
-        this.category = category;
+        this.category=category;
+
         this.organism = organism;
         this.jurisdiction = jurisdiction;
         this.current = current;
+    }
+
+
+
+    public Set<Rubro> getRubroList() {
+        return rubroList;
+    }
+
+    public void setRubroList(Set<Rubro> rubroList) {
+        this.rubroList = rubroList;
     }
 
     public Integer getNormativaId() {
@@ -63,12 +85,12 @@ public class Normativa {
         this.normativaId = normativaId;
     }
 
-    public String getPrecioBase() {
-        return precioBase;
+    public String getNorma() {
+        return norma;
     }
 
-    public void setPrecioBase(String precioBase) {
-        this.precioBase = precioBase;
+    public void setNorma(String norma) {
+        this.norma = norma;
     }
 
     public String getTitle() {
@@ -87,13 +109,7 @@ public class Normativa {
         this.authority = authority;
     }
 
-    public String getCategory() {
-        return category;
-    }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
 
     public String getOrganism() {
         return organism;
@@ -119,11 +135,17 @@ public class Normativa {
         this.current = current;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category){this.category=category;}
+
     @Override
     public String toString() {
         return "Normativa{" +
                 "normativaId=" + normativaId +
-                ", precioBase='" + precioBase + '\'' +
+                ", norma='" + norma + '\'' +
                 ", title='" + title + '\'' +
                 ", authority='" + authority + '\'' +
                 ", category='" + category + '\'' +

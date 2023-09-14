@@ -1,6 +1,7 @@
 package com.plancton.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -36,7 +37,7 @@ public class Action {
     @JoinColumn(name="requirement_id")
     Requirement requirement;
 
-
+    public Action(){}
     public Action(String title, String description, LocalDate fechaLimite, Integer avance, String responsable, String estado) {
         this.title = title;
         this.description = description;
@@ -46,5 +47,67 @@ public class Action {
         this.estado = estado;
     }
 
+    public Integer getActionId() {
+        return actionId;
+    }
 
+    public void setActionId(Integer actionId) {
+        this.actionId = actionId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public LocalDate getFechaLimite() {
+        return fechaLimite;
+    }
+
+    public void setFechaLimite(LocalDate fechaLimite) {
+        this.fechaLimite = fechaLimite;
+    }
+
+    public Integer getAvance() {
+        return avance;
+    }
+
+    public void setAvance(Integer avance) {
+        this.avance = avance;
+    }
+
+    public String getResponsable() {
+        return responsable;
+    }
+
+    public void setResponsable(String responsable) {
+        this.responsable = responsable;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public Requirement getRequirement() {
+        return requirement;
+    }
+
+    public void setRequirement(Requirement requirement) {
+        this.requirement = requirement;
+    }
 }

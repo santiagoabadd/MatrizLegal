@@ -2,6 +2,7 @@ package com.plancton.services;
 
 import com.plancton.models.Category;
 import com.plancton.models.Customer;
+import com.plancton.models.Requirement;
 import com.plancton.repositories.CategoryRepository;
 import com.plancton.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,12 @@ public class CustomerService {
             e.printStackTrace();
             return null;
         }
+    }
+    public void deleteById(Integer id){
+        customerRepo.deleteById(id);
+    }
+    public Customer getById(Integer id){
+        return  customerRepo.getById(id);
     }
 
     public List<Customer> getAll(){
