@@ -147,6 +147,18 @@ public class ApplicationUser  {
         this.enabled = enabled;
     }
 
+    public Set<Role> getAuthorities() {
+        return authorities;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
     public Long getVerification() {
         return verification;
     }
