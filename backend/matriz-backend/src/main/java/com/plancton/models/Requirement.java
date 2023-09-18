@@ -39,7 +39,7 @@ public class Requirement {
     @JoinColumn(name="plant_id")
     Plant plant;
     @JsonIgnore
-    @OneToMany(mappedBy = "requirement",cascade= CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "requirement",cascade= CascadeType.ALL,orphanRemoval = true,fetch = FetchType.EAGER)
     Set<Action> actions;
 
 
@@ -47,6 +47,7 @@ public class Requirement {
 
 
     public Requirement() {
+        this.actions=new HashSet<>();
     }
 
     public Requirement(String title, String actualState, String requirement, String type, String compliance, String relevance, Customer customer, Category category, Plant plant) {

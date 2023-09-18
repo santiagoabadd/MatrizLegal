@@ -32,16 +32,28 @@ public class NormativaRequest {
 
 
 
-    private Integer categoryId;
+    private Integer[] categoryIds;
 
-    public NormativaRequest(String norma, String title, String authority, String organism, String jurisdiction, boolean current, Integer categorytId) {
+    private Integer[] rubroIds;
+
+    public NormativaRequest(String norma, String title, String authority, String organism, String jurisdiction, boolean current, Integer[] categoryIds,Integer[] rubroIds) {
         this.norma = norma;
         this.title = title;
         this.authority = authority;
         this.organism = organism;
         this.jurisdiction = jurisdiction;
         this.current = current;
-        this.categoryId = categoryId;
+        this.categoryIds=categoryIds;
+        this.rubroIds=rubroIds;
+
+    }
+
+    public Integer[] getRubrosIds() {
+        return rubroIds;
+    }
+
+    public void setRubrosIds(Integer[] rubrosIds) {
+        this.rubroIds = rubrosIds;
     }
 
     public String getNorma() {
@@ -94,11 +106,11 @@ public class NormativaRequest {
         this.current = current;
     }
 
-    public Integer getCategoryId() {
-        return categoryId;
+    public Integer[] getCategoryIds() {
+        return categoryIds;
     }
 
-    public void setCategoryIdId(Integer categoryIdtId) {
-        this.categoryId = categoryIdtId;
+    public void setCategoryIds(Integer[] categoryIds) {
+        this.categoryIds = categoryIds;
     }
 }

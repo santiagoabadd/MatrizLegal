@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -36,38 +35,50 @@ public class Normativa {
     @Column(name = "current",nullable = false)
     private boolean current;
     @JsonIgnore
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "normativa_rubro",
-            joinColumns = @JoinColumn(name = "normativa_id"),
-            inverseJoinColumns = @JoinColumn(name = "rubro_id")
+            joinColumns = {@JoinColumn(name = "normativa_id")},
+            inverseJoinColumns = {@JoinColumn(name = "rubro_id")}
     )
-    private Set<Rubro> rubroList = new HashSet<>();
+    private Set<Rubro> rubroList;
 
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "category_normativa_junction",
+            joinColumns = {@JoinColumn(name = "normativa_id")},
+            inverseJoinColumns = {@JoinColumn(name = "category_id")}
+    )
+    private Set<Category> categories;
 
-    @ManyToOne
-    @JoinColumn(name="category_id")
-    Category category;
 
 
 
     public Normativa() {
-        super();
-    }
+        this.categories=new HashSet<>();
+        this.rubroList=new HashSet<>();
+  }
 
-    public Normativa(String norma, String title, String authority,String organism, String jurisdiction, boolean current,Category category) {
+    public Normativa(String norma, String title, String authority,String organism, String jurisdiction, boolean current) {
 
         this.norma = norma;
         this.title = title;
         this.authority = authority;
-        this.category=category;
-
+        this.categories=new HashSet<>();
+        this.rubroList=new HashSet<>();
         this.organism = organism;
         this.jurisdiction = jurisdiction;
         this.current = current;
     }
 
+    public Set<Category> getCategories() {
+        return categories;
+    }
 
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
+    }
 
     public Set<Rubro> getRubroList() {
         return rubroList;
@@ -135,11 +146,7 @@ public class Normativa {
         this.current = current;
     }
 
-    public Category getCategory() {
-        return category;
-    }
 
-    public void setCategory(Category category){this.category=category;}
 
     @Override
     public String toString() {
@@ -148,7 +155,6 @@ public class Normativa {
                 ", norma='" + norma + '\'' +
                 ", title='" + title + '\'' +
                 ", authority='" + authority + '\'' +
-                ", category='" + category + '\'' +
                 ", organism='" + organism + '\'' +
                 ", jurisdiction='" + jurisdiction + '\'' +
                 ", current=" + current +

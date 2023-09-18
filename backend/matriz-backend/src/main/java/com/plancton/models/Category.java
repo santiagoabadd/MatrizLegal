@@ -22,21 +22,23 @@ public class Category {
 
 
     @JsonIgnore
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "category_normativa",
-            joinColumns = {@JoinColumn(name = "category_id")},
-            inverseJoinColumns = {@JoinColumn(name = "normativa_id")}
-    )
-    private Set<Normativa> normativasC;
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "categories")
+    private Set<Normativa> normativas;
     @JsonIgnore
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
-    List<Requirement> requirements;
-    @JsonIgnore
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
-    Set<Normativa> normativa;
+    private Set<Requirement> requirements;
 
-    public Category( ) {}
+
+    public Category( ) {
+        this.normativas = new HashSet<>();
+        this.requirements = new HashSet<>();
+    }
+
+    public Category(String category) {
+        this.category = category;
+        this.normativas = new HashSet<>();
+        this.requirements = new HashSet<>();
+    }
 
     public Integer getCategoryId() {
         return categoryId;
@@ -47,27 +49,24 @@ public class Category {
         this.categoryId = categoryId;
     }
 
-    public Set<Normativa> getNormativasC() {
-        return normativasC;
+
+    public String getCategoryAsString() {
+        return "Category ID: " + categoryId + ", Category Name: " + category;
     }
 
-    public void setNormativasC(Set<Normativa> normativasC) {
-        this.normativasC = normativasC;
+    public Set<Normativa> getNormativas() {
+        return normativas;
     }
 
-    public Set<Normativa> getNormativa() {
-        return normativa;
+    public void setNormativas(Set<Normativa> normativas) {
+        this.normativas = normativas;
     }
 
-    public void setNormativa(Set<Normativa> normativa) {
-        this.normativa = normativa;
-    }
-
-    public List<Requirement> getRequirements() {
+    public Set<Requirement> getRequirements() {
         return requirements;
     }
 
-    public void setRequirements(List<Requirement> requirements) {
+    public void setRequirements(Set<Requirement> requirements) {
         this.requirements = requirements;
     }
 

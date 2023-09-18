@@ -1,75 +1,76 @@
 package com.plancton.controllers;
 
 
-import com.plancton.models.Customer;
+import com.plancton.models.*;
 import com.plancton.models.Customer;
 import com.plancton.repositories.CustomerRepository;
+import com.plancton.services.CustomerService;
+import com.plancton.services.RubroService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @RestController
 @CrossOrigin("http://localhost:3000")
 public class CustomerController {
 
     @Autowired
-    private CustomerRepository repo;
+    private CustomerService service;
+
+    @Autowired
+    private RubroService serviceRubro;
 
     @GetMapping("/customer")
     public List<Customer> listCustomers(){
 
 
-        return repo.findAll();
+        return service.getAll();
 
     }
 
     @GetMapping("/customer/{id}")
-    Optional<Customer> getCustomerById(@PathVariable Integer id){
-        return repo.findById(id);
+    @Transactional
+    Customer getCustomerById(@PathVariable Integer id){
+        return service.getById(id);
     }
 
     @PutMapping ("/customer/{id}")
     Optional<Customer> updateCustomer(@RequestBody Customer newCustomer,@PathVariable Integer id){
-        return repo.findById(id)
-                .map(customer -> {
-                    customer.setCompany(newCustomer.getCompany());
-                    customer.setEnabled(newCustomer.isEnabled());
-
-                    customer.getUsers().clear();
-                    customer.getUsers().addAll(newCustomer.getUsers());
-
-                    customer.getPlant().clear();
-                    customer.getPlant().addAll(newCustomer.getPlant());
-
-                    customer.getRequirements().clear();
-                    customer.getRequirements().addAll(newCustomer.getRequirements());
-
-                    customer.getNormativasList().clear();
-                    customer.getNormativasList().addAll(newCustomer.getNormativasList());
-
-                    customer.getRubroList().clear();
-                    customer.getRubroList().addAll(newCustomer.getRubroList());
-
-                    return repo.save(customer);
-                });
+        return service.updateCustomer(newCustomer,id);
     }
 
     @DeleteMapping("/customer/{id}")
     String deleteCustomer(@PathVariable Integer id){
-        if(!repo.existsById(id)){
 
-        }
-        repo.deleteById(id);
+        service.deleteById(id);
         return  "User with id "+id+" has been deleted success.";
     }
 
 
     @PostMapping("/customer")
-    public Customer registerCustomer(@RequestBody Customer Customer){
+    public Customer registerCustomer(@RequestBody CustomerRequest customerRequest){
 
-        return repo.save(Customer);
+        String company=customerRequest.getCompany();
+        Boolean enabled=customerRequest.isEnabled();
+
+        Customer newCustomer=new Customer(company,enabled);
+
+        Integer []rubroIds=customerRequest.getRubroIds();
+        Set<Rubro> rubros=newCustomer.getRubroList();
+
+        for (int id: rubroIds) {
+            // El valor de "numero" será cada elemento del array en cada iteración
+            rubros.add(serviceRubro.getById(id));
+        }
+
+
+        newCustomer.setRubroList(rubros);
+
+        return service.registerCustomer(newCustomer);
     }
 
 

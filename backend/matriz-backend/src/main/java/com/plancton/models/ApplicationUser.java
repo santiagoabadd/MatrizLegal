@@ -2,14 +2,18 @@ package com.plancton.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name="users")
-public class ApplicationUser {
+public class ApplicationUser  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -58,6 +62,17 @@ public class ApplicationUser {
 
         this.authorities = new HashSet<>();
         this.enabled = false;
+    }
+
+
+
+
+
+
+
+
+    public boolean isEnabled() {
+        return enabled;
     }
 
     public Integer getUserId() {
@@ -116,7 +131,7 @@ public class ApplicationUser {
         this.password = password;
     }
 
-    public Set<Role> getAuthorities() {
+    public Set<Role> getRoles() {
         return authorities;
     }
 

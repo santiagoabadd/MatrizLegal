@@ -11,6 +11,7 @@ import com.plancton.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -43,6 +44,9 @@ public class UserService {
         user.setFirstName(ro.getFirstName());
         user.setLastName(ro.getLastName());
         user.setEmail(ro.getEmail());
+        user.setPassword(ro.getPassword());
+        user.setPhone(ro.getPhone());
+        user.setVerification(1L);
 
         String name= user.getFirstName()+user.getLastName();
 
@@ -57,10 +61,15 @@ public class UserService {
         }
 
         user.setUsername(tempName);
-
-        Set<Role> roles=user.getAuthorities();
-        roles.add(roleRepo.findByAuthority("USER").get());
+        System.out.println(ro.getAuthoritie().toUpperCase());
+        Set<Role> roles=user.getRoles();
+        roles.add(roleRepo.findByAuthority(ro.getAuthoritie().toUpperCase()).get());
         user.setAuthorities(roles);
+
+        Set<Role> categories = user.getRoles();
+        for (Role category : categories) {
+            System.out.println(category.getUserAsString());
+        }
 
         try{
             return userRepo.save(user);
@@ -68,6 +77,10 @@ public class UserService {
             throw new EmailAlreadyTakenException();
         }
 
+    }
+
+    public List<ApplicationUser> getAll(){
+        return userRepo.findAll();
     }
 
     private String generateUsername(String name){

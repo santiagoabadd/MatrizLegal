@@ -12,14 +12,46 @@ export default function AddNormativaForm() {
     organism: '',
     jurisdiction: '',
     current: false,
-    categoryId:''
+    categoryIds: [] ,
+    rubroIds: []
   });
 
   const [categorys, setCategorys] = useState([]);
 
+  const [rubros, setRubros] = useState([]);
+
   const onInputChange = (e) => {
     const { name, value } = e.target;
-    setNormativaData({ ...normativaData, [name]: value });
+  
+    if (name === 'categoryIds') {
+      // Si el campo es categoryIds, asegúrate de manejar los valores como números (si es necesario)
+      const selectedCategoryIds = normativaData.categoryIds.slice(); // Clona el arreglo existente
+      if (e.target.checked) {
+        selectedCategoryIds.push(Number(value)); // Agrega el nuevo valor como número
+      } else {
+        const index = selectedCategoryIds.indexOf(Number(value));
+        if (index !== -1) {
+          selectedCategoryIds.splice(index, 1); // Elimina el valor si está deseleccionado
+        }
+      }
+    
+      setNormativaData({ ...normativaData, categoryIds: selectedCategoryIds });
+    } else if (name === 'rubroIds') { // Aquí cambiamos a 'rubroIds'
+      const selectedRubroIds = normativaData.rubroIds.slice(); // Clona el arreglo existente
+      if (e.target.checked) {
+        selectedRubroIds.push(Number(value)); // Agrega el nuevo valor como número
+      } else {
+        const index = selectedRubroIds.indexOf(Number(value));
+        if (index !== -1) {
+          selectedRubroIds.splice(index, 1); // Elimina el valor si está deseleccionado
+        }
+      }
+    
+      setNormativaData({ ...normativaData, rubroIds: selectedRubroIds });
+    } else {
+      // Para otros campos, simplemente asigna el valor normalmente
+      setNormativaData({ ...normativaData, [name]: value });
+    }
   };
 
   const fetchCategorys = async () => {
@@ -31,15 +63,26 @@ export default function AddNormativaForm() {
     }
   };
 
+  const fetchRubros = async () => {
+    try {
+      const responseRubro = await axios.get('http://localhost:8080/rubro'); // Reemplaza la URL por la correcta
+      setRubros(responseRubro.data); // Asigna la lista de plantas al estado
+    } catch (error) {
+      console.error('Error al obtener la lista de plantas', error);
+    }
+  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
     console.log(normativaData);
     await axios.post('http://localhost:8080/normativa', normativaData);
+    await axios.post('http://localhost:8080/asignarNormativaARubros', normativaData);
     navigate('/');
   };
 
   useEffect(() => {
     fetchCategorys();
+    fetchRubros();
   }, []);
 
   return (
@@ -132,21 +175,42 @@ export default function AddNormativaForm() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="categoryId">Category</label>
-          <select
-            className="form-control"
-            name="categoryId"
-            value={normativaData.categoryId}
-            onChange={(e) => onInputChange(e)}
-          >
-            <option value="">Seleccionar categoria</option>
-            {categorys.map((category) => (
-              <option key={category.categoryId} value={category.categoryId}>
-                {category.category}
-              </option>
-            ))}
-          </select>
-        </div>
+  <label htmlFor="categoryIds">Categorías</label>
+  <div className="form-check">
+    {categorys.map((category) => (
+      <div key={category.categoryId} className="form-check form-check-inline">
+        <input
+          type="checkbox"
+          className="form-check-input"
+          name="categoryIds"
+          value={category.categoryId}
+          checked={normativaData.categoryIds.includes(category.categoryId)}
+          onChange={(e) => onInputChange(e)}
+        />
+        <label className="form-check-label">{category.category}</label>
+      </div>
+    ))}
+  </div>
+</div>
+
+<div className="form-group">
+  <label htmlFor="rubroIds">Rurbos</label>
+  <div className="form-check">
+    {rubros.map((rubro) => (
+      <div key={rubro.rubroId} className="form-check form-check-inline">
+        <input
+          type="checkbox"
+          className="form-check-input"
+          name="rubroIds"
+          value={rubro.rubroId}
+          checked={normativaData.rubroIds.includes(rubro.rubroId)}
+          onChange={(e) => onInputChange(e)}
+        />
+        <label className="form-check-label">{rubro.rubro}</label>
+      </div>
+    ))}
+  </div>
+</div>
 
         <button type="submit" className="btn btn-primary">
           Añadir Normativa

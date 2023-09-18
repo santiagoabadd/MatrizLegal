@@ -36,8 +36,8 @@ public class CategoryController {
                 .map(category -> {
                     category.setCategory(newCategory.getCategory());
 
-                    category.getNormativasC().clear();
-                    category.getNormativasC().addAll(newCategory.getNormativasC());
+                    category.getNormativas().clear();
+                    category.getNormativas().addAll(newCategory.getNormativas());
 
                     category.getRequirements().clear();
                     category.getRequirements().addAll(newCategory.getRequirements());

@@ -14,7 +14,7 @@ export default function AddRequirementForm() {
     type: '',
     plantId: '',
     categoryId:'',
-    customerId:'2'
+    customerId:'708'
   });
 
   const [plants, setPlants] = useState([]);

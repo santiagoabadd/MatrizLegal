@@ -46,6 +46,9 @@ public class PlantController {
     @DeleteMapping("/plant/{id}")
     String deletePlant(@PathVariable Integer id){
 
+        service.getById(id).setCustomer(null);
+
+
         service.deleteById(id);
         return  "User with id "+id+" has been deleted success.";
     }

@@ -51,7 +51,8 @@ public class RequirementController {
 
     @DeleteMapping("/requirement/{id}")
     String deleteRequirement(@PathVariable Integer id){
-
+        service.getById(id).setPlant(null);
+        service.getById(id).setCustomer(null);
         service.deleteById(id);
         return  "User with id "+id+" has been deleted success.";
     }

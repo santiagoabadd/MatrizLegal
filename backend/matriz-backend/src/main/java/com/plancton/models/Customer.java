@@ -1,10 +1,7 @@
 package com.plancton.models;
 
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -14,6 +11,7 @@ import java.util.Set;
 @Entity
 @Table(name="customers")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "customerId")
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,25 +23,25 @@ public class Customer {
     @Column(name = "enabled")
     private boolean enabled;
     @JsonIgnore
-    @OneToMany(mappedBy = "customer",cascade= CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "customer",cascade= CascadeType.ALL,orphanRemoval = true,fetch = FetchType.EAGER)
     Set<ApplicationUser> users;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "customer",cascade= CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "customer",cascade= CascadeType.ALL,orphanRemoval = true,fetch = FetchType.EAGER)
     Set<Requirement> requirements;
     @JsonIgnore
-    @OneToMany(mappedBy = "customer",cascade= CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "customer",cascade= CascadeType.ALL,orphanRemoval = true,fetch = FetchType.EAGER)
     Set<Plant> plant;
     @JsonIgnore
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-            name = "customer_requirements",
+            name = "customer_normativa",
             joinColumns = @JoinColumn(name = "customer_id"),
             inverseJoinColumns = @JoinColumn(name = "normativa_id")
     )
     private Set<Normativa> normativasList = new HashSet<>();
     @JsonIgnore
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "customer_rubro",
             joinColumns = @JoinColumn(name = "customer_id"),
@@ -52,7 +50,23 @@ public class Customer {
     private Set<Rubro> rubroList = new HashSet<>();
 
 
-    public Customer(){}
+    public Customer(){
+        this.normativasList = new HashSet<>();
+        this.rubroList = new HashSet<>();
+        this.plant=new HashSet<>();
+        this.requirements=new HashSet<>();
+        this.users=new HashSet<>();
+    }
+
+    public Customer(String company, boolean enabled) {
+        this.company = company;
+        this.enabled = enabled;
+        this.normativasList = new HashSet<>();
+        this.rubroList = new HashSet<>();
+        this.plant=new HashSet<>();
+        this.requirements=new HashSet<>();
+        this.users=new HashSet<>();
+    }
 
     public Set<Rubro> getRubroList() {
         return rubroList;

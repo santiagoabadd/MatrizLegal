@@ -1,13 +1,13 @@
 package com.plancton.services;
 
 import com.plancton.models.Category;
-import com.plancton.models.Requirement;
+import com.plancton.models.Normativa;
 import com.plancton.repositories.CategoryRepository;
-import com.plancton.repositories.RequirementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoryService {
@@ -36,12 +36,5 @@ public class CategoryService {
         return  categoryRepo.findAll();
     }
 
-    public Category updateCategory(Category category){
-        try{
-            return categoryRepo.save(category);
-        }catch(Exception e){
-            e.printStackTrace();
-            return null;
-        }
-    }
+
 }

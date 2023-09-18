@@ -3,6 +3,7 @@ package com.plancton.services;
 import com.plancton.models.Plant;
 import com.plancton.models.Requirement;
 import com.plancton.repositories.PlantRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,10 +37,12 @@ public class PlantService {
         return  plantRepo.getById(id);
     }
 
-    public void deleteById(Integer id){
-        plantRepo.deleteById(id);
-    }
 
+    public void deleteById(Integer id){
+
+            plantRepo.deleteById(id);
+
+    }
     public Optional<Plant> updatePlant(Integer id, Plant newPlant) {
         return plantRepo.findById(id)
                 .map(plant -> {

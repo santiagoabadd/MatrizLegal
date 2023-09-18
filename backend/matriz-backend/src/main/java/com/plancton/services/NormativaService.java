@@ -1,9 +1,6 @@
 package com.plancton.services;
 
-import com.plancton.models.Customer;
-import com.plancton.models.Plant;
 import com.plancton.models.Normativa;
-import com.plancton.repositories.CustomerRepository;
 import com.plancton.repositories.NormativaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,7 +39,6 @@ public class NormativaService {
                     normativa.setNorma(newNormativa.getNorma());
                     normativa.setTitle(newNormativa.getTitle());
                     normativa.setAuthority(newNormativa.getAuthority());
-                    normativa.setCategory(newNormativa.getCategory());
                     normativa.setOrganism(newNormativa.getOrganism());
                     normativa.setJurisdiction(newNormativa.getJurisdiction());
                     normativa.setCurrent(newNormativa.isCurrent());
@@ -51,8 +47,15 @@ public class NormativaService {
                     normativa.getRubroList().clear();
                     normativa.getRubroList().addAll(newNormativa.getRubroList());
 
+                    normativa.getCategories().clear();
+                    normativa.getCategories().addAll(newNormativa.getCategories());
+
                     return normativaRepo.save(normativa);
                 });
+    }
+
+    public Normativa getByNorma(String norma){
+        return normativaRepo.findByNorma(norma);
     }
 
     public void deleteById(Long id){

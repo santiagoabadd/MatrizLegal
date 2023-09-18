@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -41,7 +42,10 @@ public class Plant {
     @OneToMany(mappedBy = "plant",cascade= CascadeType.ALL,orphanRemoval = true)
     Set<Requirement> requirements;
 
-    public Plant(){}
+    public Plant(){
+        this.requirements=new HashSet<>();
+
+    }
 
 
     public Plant(String name, String description, LocalDate fechaAlta, String jurisdiction, boolean active, String estado, Customer customer) {

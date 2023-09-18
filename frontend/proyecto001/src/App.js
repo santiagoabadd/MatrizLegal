@@ -19,6 +19,8 @@ import AddCategoryForm from './categorys/AddCategoryForm';
 import ListCategorys from './categorys/ListCategorys';
 import EditCategoryForm from './categorys/EditCategoryForm';
 import AddActionForm from './actions/AddActionForm';
+import AddRubroForm from './rubros/AddRubroForm';
+import RegisterUserForm from './userss/RegisterUserForm';
 
 function App() {
   return (
@@ -41,7 +43,9 @@ function App() {
       <Route exact path="/editnormativa/:id" element={<EditNormativaForm/>}/>
       <Route exact path="/addnormativa" element={<AddNormativaForm/>}/>
       <Route exact path="/addcustomer" element={<AddCustomerForm/>}/>
+      <Route exact path="/addrubro" element={<AddRubroForm/>}/>
       <Route exact path="/addcategory" element={<AddCategoryForm/>}/>
+      <Route exact path="/register" element={<RegisterUserForm/>}/>
       </Routes>
       </Router>
       
