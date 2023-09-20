@@ -8,7 +8,16 @@ import com.plancton.models.Requirement;
 import com.plancton.repositories.PlantRepository;
 import com.plancton.services.CustomerService;
 import com.plancton.services.PlantService;
+import com.plancton.services.TokenService;
+import com.plancton.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.jwt.Jwt;
+import org.springframework.security.oauth2.server.resource.InvalidBearerTokenException;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -16,22 +25,31 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("*")
 public class PlantController {
 
     @Autowired
     private PlantService service;
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     private CustomerService customerService;
 
+    @Autowired
+    private TokenService tokenService;
+
     @GetMapping("/plant")
-    public List<Plant> listPlants(){
+    public List<Plant> listPlants(@RequestHeader("Authorization") String token){
 
+        Customer customer=userService.getUserByUsername(tokenService.getUsernameFromToken(token)).getCustomer();
 
-        return service.getAll();
+        return service.getPlantsByCustomer(customer);
 
     }
+
+
 
     @GetMapping("/plant/{id}")
     Plant getPlantById(@PathVariable Integer id){

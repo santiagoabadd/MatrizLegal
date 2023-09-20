@@ -22,12 +22,21 @@ export default function AddPlantForm() {
     setPlantData({ ...plantData, [name]: value });
   };
 
+  const token = localStorage.getItem('jwtToken');
+
+      // Configura un objeto de cabecera con el token JWT
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+
   const onSubmit = async (e) => {
     e.preventDefault();
     console.log(plantData);
-    await axios.post('http://localhost:8080/plant', plantData);
+    await axios.post('http://localhost:8080/plant', plantData,{headers});
     navigate('/');
   };
+
+  
 
   const fetchCustomers = async () => {
     try {

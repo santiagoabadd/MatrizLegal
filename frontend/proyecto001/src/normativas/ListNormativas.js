@@ -11,13 +11,20 @@ export default function Home() {
     loadNormativas();
   }, []);
 
+  const token = localStorage.getItem('jwtToken');
+
+      // Configura un objeto de cabecera con el token JWT
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+
   const loadNormativas = async () => {
-    const result = await axios.get('http://localhost:8080/normativa');
+    const result = await axios.get('http://localhost:8080/normativa',{headers});
     setNormativas(result.data);
   };
 
   const deleteNormativa = async (id) => {
-    await axios.delete(`http://localhost:8080/normativa/${id}`);
+    await axios.delete(`http://localhost:8080/normativa/${id}`,{headers});
     loadNormativas();
   };
 

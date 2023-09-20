@@ -14,10 +14,17 @@ export default function AddCategoryForm() {
     setCategoryData({ ...categoryData, [name]: value });
   };
 
+  const token = localStorage.getItem('jwtToken');
+
+      // Configura un objeto de cabecera con el token JWT
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8080/category', categoryData);
+      await axios.post('http://localhost:8080/category', categoryData,{headers});
       navigate('/categories');
     } catch (error) {
       console.error('Error adding category:', error);

@@ -9,13 +9,20 @@ export default function ListCustomers() {
     loadCustomers();
   }, []);
 
+  const token = localStorage.getItem('jwtToken');
+
+      // Configura un objeto de cabecera con el token JWT
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+
   const loadCustomers = async () => {
-    const result = await axios.get('http://localhost:8080/customer'); // Ajusta la URL según tu configuración de servidor
+    const result = await axios.get('http://localhost:8080/customer',{headers}); // Ajusta la URL según tu configuración de servidor
     setCustomers(result.data);
   };
 
   const deleteCustomer = async (id) => {
-    await axios.delete(`http://localhost:8080/customer/${id}`); // Ajusta la URL según tu configuración de servidor
+    await axios.delete(`http://localhost:8080/customer/${id}`,{headers}); // Ajusta la URL según tu configuración de servidor
     loadCustomers();
   };
 

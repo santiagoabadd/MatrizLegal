@@ -13,7 +13,18 @@ export default function ListCategorys() {
 
   const loadCategories = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/category');
+      
+
+      const token = localStorage.getItem('jwtToken');
+
+      // Configura un objeto de cabecera con el token JWT
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+
+      // Realiza la solicitud Axios con el encabezado de autorización
+      const response = await axios.get('http://localhost:8080/category', { headers });
+
       setCategories(response.data);
     } catch (error) {
       console.error('Error loading categories:', error);
@@ -21,8 +32,19 @@ export default function ListCategorys() {
   };
 
   const deleteCategory = async (id) => {
-    await axios.delete(`http://localhost:8080/category/${id}`);
-    loadCategories();
+    try {
+      const token = localStorage.getItem('jwtToken');
+  
+      // Configura un objeto de cabecera con el token JWT
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+  
+      await axios.delete(`http://localhost:8080/category/${id}`, { headers });
+      loadCategories();
+    } catch (error) {
+      console.error('Error al eliminar la categoría:', error);
+    }
   };
 
   return (

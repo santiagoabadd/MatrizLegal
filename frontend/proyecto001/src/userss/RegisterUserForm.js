@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -10,9 +10,8 @@ export default function RegisterUserForm() {
     lastName: '',
     email: '',
     phone: '',
-    username: '',
     password: '',
-    authoritie: 'USER', // Valor predeterminado: 'user'
+    customerId:''
   });
 
   const onInputChange = (e) => {
@@ -20,18 +19,34 @@ export default function RegisterUserForm() {
     setUserData({ ...userData, [name]: value });
   };
 
+  const [customers, setCustomers] = useState([]);
+  
+
   const onSubmit = async (e) => {
     e.preventDefault();
 
     try {
       console.log(userData);
-      await axios.post('http://localhost:8080/user', userData);
-      navigate('/login'); // Redirige al usuario a la página de inicio de sesión después de registrarse
+      await axios.post('http://localhost:8080/auth/register', userData);
+      
+      // Redirige al usuario a la página de inicio de sesión después de registrarse
     } catch (error) {
       console.error('Error al registrar al usuario', error);
     }
   };
 
+  const fetchCustomers = async () => {
+    try {
+      const responseCustomer = await axios.get('http://localhost:8080/customer'); // Reemplaza la URL por la correcta
+      setCustomers(responseCustomer.data); // Asigna la lista de plantas al estado
+    } catch (error) {
+      console.error('Error al obtener la lista de clientes', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchCustomers();
+  }, []);
   return (
     <div>
       <h2>Registro de Usuario</h2>
@@ -84,17 +99,7 @@ export default function RegisterUserForm() {
           />
         </div>
 
-        <div className="form-group">
-          <label htmlFor="username">Nombre de Usuario</label>
-          <input
-            type="text"
-            className="form-control"
-            name="username"
-            placeholder="Nombre de Usuario"
-            value={userData.username}
-            onChange={(e) => onInputChange(e)}
-          />
-        </div>
+        
 
         <div className="form-group">
           <label htmlFor="password">Contraseña</label>
@@ -109,17 +114,23 @@ export default function RegisterUserForm() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="authority">Autoridad</label>
+          <label htmlFor="customerId">Cliente</label>
           <select
             className="form-control"
-            name="authority"
-            value={userData.authority}
+            name="customerId"
+            value={userData.customerId}
             onChange={(e) => onInputChange(e)}
           >
-            <option value="user">Usuario</option>
-            <option value="admin">Administrador</option>
+            <option value="">Seleccionar cliente</option>
+            {customers.map((customer) => (
+              <option key={customer.customerId} value={customer.customerId}>
+                {customer.company}
+              </option>
+            ))}
           </select>
         </div>
+
+        
 
         
 

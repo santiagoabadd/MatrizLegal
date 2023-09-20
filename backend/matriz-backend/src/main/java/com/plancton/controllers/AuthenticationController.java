@@ -5,9 +5,12 @@ import com.plancton.exceptions.EmailFailedToSendException;
 import com.plancton.exceptions.IncorrectVerificationCodeException;
 import com.plancton.exceptions.UserDoesNotExistException;
 import com.plancton.models.ApplicationUser;
+import com.plancton.models.LoginResponse;
 import com.plancton.models.RegistrationObject;
 import com.plancton.services.MailService;
+import com.plancton.services.TokenService;
 import com.plancton.services.UserService;
+import org.apache.http.auth.InvalidCredentialsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,19 +23,23 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.LinkedHashMap;
 
-@Controller
+@RestController
 @RequestMapping("/auth")
 @CrossOrigin("*")
 public class AuthenticationController {
     private final UserService userService;
+
+
+    private final TokenService tokenService;
 
     private final AuthenticationManager authenticationManager;
 
     private final MailService emailService;
 
     @Autowired
-    public AuthenticationController(UserService userService, AuthenticationManager authenticationManager, MailService emailService){
+    public AuthenticationController(UserService userService, TokenService tokenService, AuthenticationManager authenticationManager, MailService emailService){
         this.userService=userService;
+        this.tokenService = tokenService;
         this.authenticationManager=authenticationManager;
         this.emailService=emailService;
     }
@@ -101,18 +108,20 @@ public class AuthenticationController {
     public ResponseEntity<String> handleInvalidCredentials(){
         return new ResponseEntity<String>("Invalid credentials",HttpStatus.FORBIDDEN);
     }
-
+*/
     @PostMapping("/login")
-    public LoginResponse login(@RequestBody LinkedHashMap<String,String> body) throws InvalidCredentialsException{
+    public LoginResponse login(@RequestBody LinkedHashMap<String,String> body) throws InvalidCredentialsException {
         String username=body.get("username");
         String password=body.get("password");
+
 
         try{
             Authentication auth=authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username,password));
             String token=tokenService.generateToken(auth);
+            System.out.println(token);
             return new LoginResponse(userService.getUserByUsername(username),token);
         }catch(AuthenticationException e){
             throw new InvalidCredentialsException();
         }
-    }*/
+    }
 }

@@ -21,6 +21,7 @@ export default function Navbar() {
        <Link className="btn btn-dark" to= "/addrubro">Añadir Rubro</Link>
        <Link className="btn btn-dark" to= "/addnormativa">Añadir Normativa</Link>
        <Link className="btn btn-dark" to= "/register">Registrar Usuario</Link>
+       <Link className="btn btn-dark" to= "/login">Login</Link>
      </div>
    </nav>
   );

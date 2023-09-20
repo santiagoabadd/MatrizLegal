@@ -11,13 +11,20 @@ export default function Home() {
         loadRequirements();
     },[]);
 
+    const token = localStorage.getItem('jwtToken');
+
+      // Configura un objeto de cabecera con el token JWT
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+
     const loadRequirements=async ()=>{
-        const result=await axios.get("http://localhost:8080/requirement");
+        const result=await axios.get("http://localhost:8080/requirement",{headers});
         setRequirements(result.data);
     }
 
     const deleteRequirement = async (id) => {
-      await axios.delete(`http://localhost:8080/requirement/${id}`);
+      await axios.delete(`http://localhost:8080/requirement/${id}`,{headers});
       loadRequirements();
     };
 

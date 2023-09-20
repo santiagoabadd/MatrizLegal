@@ -10,13 +10,20 @@ export default function EditCategoryForm() {
     category: '',
   });
 
+  const token = localStorage.getItem('jwtToken');
+
+      // Configura un objeto de cabecera con el token JWT
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+
   useEffect(() => {
     loadCategory();
   }, []);
 
   const loadCategory = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/category/${id}`);
+      const response = await axios.get(`http://localhost:8080/category/${id}`,{headers});
       setCategoryData(response.data);
     } catch (error) {
       console.error('Error loading category:', error);
@@ -31,7 +38,7 @@ export default function EditCategoryForm() {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:8080/category/${id}`, categoryData);
+      await axios.put(`http://localhost:8080/category/${id}`, categoryData,{headers});
       navigate('/categories');
     } catch (error) {
       console.error('Error updating category:', error);

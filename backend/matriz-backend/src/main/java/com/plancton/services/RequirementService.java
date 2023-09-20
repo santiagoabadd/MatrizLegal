@@ -36,6 +36,10 @@ public class RequirementService {
         return  requirementRepo.getById(id);
     }
 
+    public List<Requirement> getRequirementsByCustomer(Customer customer){
+        return requirementRepo.getByCustomer(customer);
+    }
+
     public Optional<Requirement> updateRequirement(Integer id, Requirement newRequirement) {
         return requirementRepo.findById(id)
                 .map(requirement -> {

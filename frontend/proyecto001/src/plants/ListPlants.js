@@ -11,14 +11,23 @@ export default function ListPlants() {
     loadPlants();
   }, []);
 
+  const token = localStorage.getItem('jwtToken');
+
+      // Configura un objeto de cabecera con el token JWT
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+
   const loadPlants = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/plant");
+      const response = await axios.get("http://localhost:8080/plant",{headers});
       setPlants(response.data);
     } catch (error) {
       console.error("Error al cargar las plantas:", error);
     }
   };
+
+
 
   const deletePlant = async (id) => {
     try {

@@ -31,14 +31,21 @@ export default function EditRequirementForm() {
     loadRequirement();
   },[]);
 
+  const token = localStorage.getItem('jwtToken');
+
+      // Configura un objeto de cabecera con el token JWT
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+
   const onSubmit= async (e)=>{
     e.preventDefault();
-    await axios.put(`http://localhost:8080/requirement/${id}`,requirementData)
+    await axios.put(`http://localhost:8080/requirement/${id}`,requirementData,{headers})
     navigate("/")
   };
 
   const loadRequirement = async () => {
-    const result = await axios.get(`http://localhost:8080/requirement/${id}`);
+    const result = await axios.get(`http://localhost:8080/requirement/${id}`,{headers});
     setRequirement(result.data);
   };
 

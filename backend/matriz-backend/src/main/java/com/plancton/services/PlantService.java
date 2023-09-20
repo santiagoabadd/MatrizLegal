@@ -1,5 +1,6 @@
 package com.plancton.services;
 
+import com.plancton.models.Customer;
 import com.plancton.models.Plant;
 import com.plancton.models.Requirement;
 import com.plancton.repositories.PlantRepository;
@@ -42,6 +43,10 @@ public class PlantService {
 
             plantRepo.deleteById(id);
 
+    }
+
+    public List<Plant> getPlantsByCustomer(Customer customer){
+        return plantRepo.getByCustomer(customer);
     }
     public Optional<Plant> updatePlant(Integer id, Plant newPlant) {
         return plantRepo.findById(id)

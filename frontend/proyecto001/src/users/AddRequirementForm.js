@@ -16,14 +16,19 @@ export default function AddRequirementForm() {
     categoryId:'',
     customerId:'708'
   });
+  const token = localStorage.getItem('jwtToken');
 
+  // Configura un objeto de cabecera con el token JWT
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
   const [plants, setPlants] = useState([]);
   const [categorys, setCategorys] = useState([]); // Estado para almacenar la lista de plantas
 
   // Función para cargar la lista de plantas desde el backend
   const fetchPlants = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/plant'); // Reemplaza la URL por la correcta
+      const response = await axios.get('http://localhost:8080/plant',{headers}); // Reemplaza la URL por la correcta
       setPlants(response.data); // Asigna la lista de plantas al estado
     } catch (error) {
       console.error('Error al obtener la lista de plantas', error);
@@ -32,7 +37,7 @@ export default function AddRequirementForm() {
 
   const fetchCategorys = async () => {
     try {
-      const caregoryResponse = await axios.get('http://localhost:8080/category'); // Reemplaza la URL por la correcta
+      const caregoryResponse = await axios.get('http://localhost:8080/category',{headers}); // Reemplaza la URL por la correcta
       setCategorys(caregoryResponse.data); // Asigna la lista de plantas al estado
     } catch (error) {
       console.error('Error al obtener la lista de categorias', error);
@@ -53,8 +58,8 @@ export default function AddRequirementForm() {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    
-    await axios.post('http://localhost:8080/requirement', requirementData);
+    console.log(requirementData);
+    await axios.post('http://localhost:8080/requirement', requirementData,{headers});
     navigate('/');
   };
 

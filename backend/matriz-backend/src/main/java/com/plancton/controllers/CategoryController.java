@@ -11,14 +11,14 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("*")
 public class CategoryController {
 
     @Autowired
     private CategoryRepository repo;
 
     @GetMapping("/category")
-    public List<Category> listCategorys(){
+    public List<Category> listCategorys(@RequestHeader("Authorization") String token){
 
 
         return repo.findAll();

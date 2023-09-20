@@ -29,15 +29,22 @@ export default function AddCustomerForm() {
     }
   };
 
+  const token = localStorage.getItem('jwtToken');
+
+      // Configura un objeto de cabecera con el token JWT
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+
   const onSubmit = async (e) => {
     e.preventDefault();
-    await axios.post('http://localhost:8080/customer', customerData); // Ajusta la URL según tus necesidades
+    await axios.post('http://localhost:8080/customer', customerData,{headers}); // Ajusta la URL según tus necesidades
     navigate('/');
   };
 
   const fetchRubros = async () => {
     try {
-      const responseRubros = await axios.get('http://localhost:8080/rubro'); // Reemplaza la URL por la correcta
+      const responseRubros = await axios.get('http://localhost:8080/rubro',{headers}); // Reemplaza la URL por la correcta
       setRubros(responseRubros.data); // Asigna la lista de rubros al estado
     } catch (error) {
       console.error('Error al obtener la lista de rubros', error);

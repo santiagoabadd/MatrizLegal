@@ -15,9 +15,16 @@ export default function EditCustomerForm() {
     loadCustomer();
   }, []);
 
+  const token = localStorage.getItem('jwtToken');
+
+      // Configura un objeto de cabecera con el token JWT
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+
   const loadCustomer = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/customer/${id}`);
+      const response = await axios.get(`http://localhost:8080/customer/${id}`,{headers});
       setCustomerData(response.data);
     } catch (error) {
       console.error('Error loading customer:', error);
@@ -32,7 +39,7 @@ export default function EditCustomerForm() {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:8080/customer/${id}`, customerData);
+      await axios.put(`http://localhost:8080/customer/${id}`, customerData,{headers});
       navigate('/');
     } catch (error) {
       console.error('Error updating customer:', error);

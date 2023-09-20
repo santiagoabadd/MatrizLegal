@@ -13,11 +13,19 @@ export default function AddRubroForm() {
     setRubroData({ ...rubroData, [name]: value });
   };
 
+  const token = localStorage.getItem('jwtToken');
+
+      // Configura un objeto de cabecera con el token JWT
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+
   const onSubmit = async (e) => {
     e.preventDefault();
 
+
     try {
-      await axios.post('http://localhost:8080/rubro', rubroData); // Reemplaza la URL por la correcta
+      await axios.post('http://localhost:8080/rubro', rubroData,{headers}); // Reemplaza la URL por la correcta
       // Manejar el éxito o redirigir a otra página si es necesario
       console.log('Rubro agregado exitosamente');
       navigate('/');

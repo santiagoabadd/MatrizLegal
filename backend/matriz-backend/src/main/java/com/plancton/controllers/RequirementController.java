@@ -6,10 +6,8 @@ import com.plancton.repositories.CategoryRepository;
 import com.plancton.repositories.CustomerRepository;
 import com.plancton.repositories.PlantRepository;
 import com.plancton.repositories.RequirementRepository;
-import com.plancton.services.CategoryService;
-import com.plancton.services.CustomerService;
-import com.plancton.services.PlantService;
-import com.plancton.services.RequirementService;
+import com.plancton.services.*;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("*")
 public class RequirementController {
 
 
@@ -26,21 +24,31 @@ public class RequirementController {
     private RequirementService service;
     @Autowired
     private PlantService servicePlant;
+
+    @Autowired
+    TokenService tokenService;
+    @Autowired
+    private UserService serviceUser;
     @Autowired
     private CategoryService serviceCategory;
     @Autowired
     private CustomerService serviceCustomer;
 
     @GetMapping("/requirement")
-    public List<Requirement> listRequirements(){
+    public List<Requirement> listRequirements(@RequestHeader("Authorization") String token){
 
-
-        return service.getAll();
+        Customer customer=serviceUser.getUserByUsername(tokenService.getUsernameFromToken(token)).getCustomer();
+        return service.getRequirementsByCustomer(customer);
 
     }
 
     @GetMapping("/requirement/{id}")
     Requirement getRequiremenById(@PathVariable Integer id){
+
+
+
+
+
         return service.getById(id);
     }
 
@@ -60,11 +68,13 @@ public class RequirementController {
 
 
     @PostMapping("/requirement")
-    public Requirement registerRequirement(@RequestBody RequirementRequest requirementRequest){
+    public Requirement registerRequirement(@RequestBody RequirementRequest requirementRequest,@RequestHeader("Authorization") String token){
 
         Plant plant=servicePlant.getById(requirementRequest.getPlantId());
         Category category=serviceCategory.getById(requirementRequest.getCategoryId());
-        Customer customer=serviceCustomer.getById(requirementRequest.getCustomerId());
+
+
+        Customer customer=serviceUser.getUserByUsername(tokenService.getUsernameFromToken(token)).getCustomer();
 
         String requirement=requirementRequest.getRequirement();
         String actualState=requirementRequest.getActualState();

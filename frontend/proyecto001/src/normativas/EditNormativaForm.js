@@ -20,9 +20,16 @@ export default function EditNormativaForm() {
     loadNormativa();
   }, []);
 
+  const token = localStorage.getItem('jwtToken');
+
+      // Configura un objeto de cabecera con el token JWT
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+
   const loadNormativa = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/normativa/${id}`);
+      const response = await axios.get(`http://localhost:8080/normativa/${id}`,{headers});
       setNormativaData(response.data);
     } catch (error) {
       console.error('Error loading normativa:', error);
@@ -37,7 +44,7 @@ export default function EditNormativaForm() {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:8080/normativa/${id}`, normativaData);
+      await axios.put(`http://localhost:8080/normativa/${id}`, normativaData,{headers});
       navigate('/');
     } catch (error) {
       console.error('Error updating normativa:', error);

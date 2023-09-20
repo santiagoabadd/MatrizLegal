@@ -16,6 +16,13 @@ export default function AddNormativaForm() {
     rubroIds: []
   });
 
+  const token = localStorage.getItem('jwtToken');
+
+      // Configura un objeto de cabecera con el token JWT
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+
   const [categorys, setCategorys] = useState([]);
 
   const [rubros, setRubros] = useState([]);
@@ -56,7 +63,7 @@ export default function AddNormativaForm() {
 
   const fetchCategorys = async () => {
     try {
-      const responseCategorys = await axios.get('http://localhost:8080/category'); // Reemplaza la URL por la correcta
+      const responseCategorys = await axios.get('http://localhost:8080/category',{headers}); // Reemplaza la URL por la correcta
       setCategorys(responseCategorys.data); // Asigna la lista de plantas al estado
     } catch (error) {
       console.error('Error al obtener la lista de plantas', error);
@@ -65,7 +72,7 @@ export default function AddNormativaForm() {
 
   const fetchRubros = async () => {
     try {
-      const responseRubro = await axios.get('http://localhost:8080/rubro'); // Reemplaza la URL por la correcta
+      const responseRubro = await axios.get('http://localhost:8080/rubro',{headers}); // Reemplaza la URL por la correcta
       setRubros(responseRubro.data); // Asigna la lista de plantas al estado
     } catch (error) {
       console.error('Error al obtener la lista de plantas', error);
@@ -75,8 +82,8 @@ export default function AddNormativaForm() {
   const onSubmit = async (e) => {
     e.preventDefault();
     console.log(normativaData);
-    await axios.post('http://localhost:8080/normativa', normativaData);
-    await axios.post('http://localhost:8080/asignarNormativaARubros', normativaData);
+    await axios.post('http://localhost:8080/normativa', normativaData,{headers});
+    await axios.post('http://localhost:8080/asignarNormativaARubros', normativaData,{headers});
     navigate('/');
   };
 

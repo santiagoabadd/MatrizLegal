@@ -15,13 +15,20 @@ export default function EditPlantForm() {
     estado: '',
   });
 
+  const token = localStorage.getItem('jwtToken');
+
+      // Configura un objeto de cabecera con el token JWT
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+
   useEffect(() => {
     loadPlant();
   }, []);
 
   const loadPlant = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/plant/${id}`);
+      const response = await axios.get(`http://localhost:8080/plant/${id}`,{headers});
       setPlantData(response.data);
     } catch (error) {
       console.error('Error loading plant:', error);
@@ -36,7 +43,7 @@ export default function EditPlantForm() {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:8080/plant/${id}`, plantData);
+      await axios.put(`http://localhost:8080/plant/${id}`, plantData,{headers});
       navigate('/');
     } catch (error) {
       console.error('Error updating plant:', error);

@@ -15,17 +15,28 @@ public class RegistrationObject {
 
     private String authoritie;
 
+    private Integer customerId;
+
 
     public RegistrationObject() {
 
     }
 
-    public RegistrationObject(String firstName, String lastName, String email, String password, String phone) {
+    public RegistrationObject(String firstName, String lastName, String email, String password, String phone,Integer customerId) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.phone = phone;
+        this.customerId=customerId;
+    }
+
+    public Integer getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
     }
 
     public String getAuthoritie() {
