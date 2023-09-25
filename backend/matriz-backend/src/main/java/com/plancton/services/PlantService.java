@@ -60,8 +60,7 @@ public class PlantService {
 
                             plant.setCustomer(newPlant.getCustomer());
 
-                            plant.getRequirements().clear();
-                            plant.getRequirements().addAll(newPlant.getRequirements());
+
 
 
 

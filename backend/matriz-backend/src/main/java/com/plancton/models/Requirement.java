@@ -8,7 +8,7 @@ import java.util.Set;
 
 @Entity
 @Table(name="requirements")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "requirementId")
+@JsonIdentityInfo(scope = Requirement.class,generator = ObjectIdGenerators.PropertyGenerator.class, property = "requirementId")
 public class Requirement {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

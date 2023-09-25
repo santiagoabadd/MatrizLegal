@@ -25,6 +25,14 @@ public class NormativaService {
         }
     }
 
+    public List<Normativa> findNormativasByPartialFields(
+            String partialNorma, String partialTitle, String partialCategoria,
+            String partialOrganismo, String partialJurisdiccion, Boolean partialCurrent) {
+        return normativaRepo.findNormativasByPartialFields(
+                partialNorma, partialTitle, partialCategoria,
+                partialOrganismo, partialJurisdiccion, partialCurrent);
+    }
+
     public List<Normativa> getAll(){
         return  normativaRepo.findAll();
     }
@@ -44,11 +52,7 @@ public class NormativaService {
                     normativa.setCurrent(newNormativa.isCurrent());
 
 
-                    normativa.getRubroList().clear();
-                    normativa.getRubroList().addAll(newNormativa.getRubroList());
 
-                    normativa.getCategories().clear();
-                    normativa.getCategories().addAll(newNormativa.getCategories());
 
                     return normativaRepo.save(normativa);
                 });
