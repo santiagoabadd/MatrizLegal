@@ -18,7 +18,7 @@ public class RoleController {
     private RoleRepository service;
     @PostMapping("/role")
     public Role registerCategory(){
-        Role role=new Role(2,"ADMIN");
+        Role role=new Role(1,"USER");
         return service.save(role);
     }
 

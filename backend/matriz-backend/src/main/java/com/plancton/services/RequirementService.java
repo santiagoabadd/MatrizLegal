@@ -53,8 +53,6 @@ public class RequirementService {
                     requirement.setTitle(newRequirement.getTitle());
                     requirement.setType(newRequirement.getType());
 
-                    requirement.getActions().clear();
-                    requirement.getActions().addAll(newRequirement.getActions());
 
                     return requirementRepo.save(requirement);
                 });

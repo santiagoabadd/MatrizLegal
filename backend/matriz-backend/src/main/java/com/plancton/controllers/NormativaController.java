@@ -184,6 +184,24 @@ public class NormativaController {
         return service.registerNormativa(normativa);
     }
 
+    @GetMapping ("/normativas")
+    public List<Normativa> getNormativas(
+            @RequestParam(required = false) String partialNorma,
+            @RequestParam(required = false) String partialTitle,
+            @RequestParam(required = false) String partialCategoria,
+            @RequestParam(required = false) String partialOrganismo,
+            @RequestParam(required = false) String partialJurisdiccion,
+            @RequestParam(required = false) Boolean partialCurrent)
+    {
+        return service.findNormativasByPartialFields(
+                partialNorma,
+                partialTitle,
+                partialCategoria,
+                partialOrganismo,
+                partialJurisdiccion,
+                partialCurrent);
+    }
+
 
 
 }
