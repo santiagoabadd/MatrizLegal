@@ -1,5 +1,6 @@
 package com.plancton.controllers;
 
+import com.plancton.dto.FindUsernameDTO;
 import com.plancton.exceptions.EmailAlreadyTakenException;
 import com.plancton.exceptions.EmailFailedToSendException;
 import com.plancton.exceptions.IncorrectVerificationCodeException;
@@ -12,7 +13,9 @@ import com.plancton.services.TokenService;
 import com.plancton.services.UserService;
 import org.apache.http.auth.InvalidCredentialsException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -94,6 +97,14 @@ public class AuthenticationController {
         String username=body.get("username");
 
         return userService.verifyEmail(username,code);
+    }
+
+    @PostMapping("/find")
+    public ResponseEntity<String> verifyUsername(@RequestBody FindUsernameDTO credential){
+        HttpHeaders httpHeaders= new HttpHeaders();
+        httpHeaders.setContentType(MediaType.TEXT_PLAIN);
+        String username=userService.verifyUsername(credential);
+        return new ResponseEntity<String>(username,HttpStatus.OK);
     }
 /*
     @PutMapping("/update/password")

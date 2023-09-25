@@ -1,6 +1,7 @@
 package com.plancton.services;
 
 
+import com.plancton.dto.FindUsernameDTO;
 import com.plancton.exceptions.EmailAlreadyTakenException;
 import com.plancton.exceptions.EmailFailedToSendException;
 import com.plancton.exceptions.IncorrectVerificationCodeException;
@@ -99,6 +100,7 @@ public class UserService implements UserDetailsService {
 
     }
 
+
     public void generateEmailVerification(String username){
         ApplicationUser user=userRepo.findByUsername(username).orElseThrow(UserDoesNotExistException::new);
 
@@ -151,5 +153,11 @@ public class UserService implements UserDetailsService {
         return name+generatedNumber;
     }
 
+    public String verifyUsername(FindUsernameDTO credential){
+        ApplicationUser user=userRepo.findByEmailOrPhoneOrUsername(credential.getEmail(), credential.getPhone(), credential.getUsername())
+                .orElseThrow(UserDoesNotExistException::new);
+        return user.getUsername();
+
+    }
 
 }

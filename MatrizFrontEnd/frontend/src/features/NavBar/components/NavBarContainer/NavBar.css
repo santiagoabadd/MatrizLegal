@@ -1,0 +1,29 @@
+.navbar-container {
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  padding: 10px 15px;
+  padding-left: 30px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #1e1e2e;
+}
+.navbar-logo-container {
+  height: 100%;
+  width: 100px;
+  padding: 10px 20px;
+}
+
+.navbar-logo {
+  width: 82px;
+}
+
+.navbar-items-list {
+  display: flex;
+}
+
+.navbar-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
