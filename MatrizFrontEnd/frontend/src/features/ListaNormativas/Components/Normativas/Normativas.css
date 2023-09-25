@@ -1,0 +1,38 @@
+.normativas-container {
+  border-radius: 5px;
+  color: rgba(255, 255, 255, 0.7);
+  border-bottom: 1px solid black;
+  padding: 15px 15px;
+}
+.normativa-table-headitem {
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 12px 7px;
+  text-align: left;
+}
+
+.normativas-header-group {
+  margin-bottom: 12px;
+  font-size: 1.0625rem;
+}
+
+.normativas-header-group > h4 {
+  font-weight: 100;
+  padding: 20px 20px;
+}
+.normativas-tabla {
+  border-collapse: collapse;
+  border-spacing: 2px;
+  width: 100%;
+}
+
+.normativa-table-item {
+  padding: 12px 7px;
+  font-size: 14px;
+  text-align: left;
+}
+
+.normativa-table-row {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}

@@ -11,10 +11,6 @@ public class RegistrationObject {
 
     private String phone;
 
-    private  String username;
-
-    private String authoritie;
-
     private Integer customerId;
 
 
@@ -39,13 +35,7 @@ public class RegistrationObject {
         this.customerId = customerId;
     }
 
-    public String getAuthoritie() {
-        return authoritie;
-    }
 
-    public void setAuthoritie(String authoritie) {
-        this.authoritie = authoritie;
-    }
 
     public String getPassword() {
         return password;
@@ -63,13 +53,7 @@ public class RegistrationObject {
         this.phone = phone;
     }
 
-    public String getUsername() {
-        return username;
-    }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -104,8 +88,6 @@ public class RegistrationObject {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", phone='" + phone + '\'' +
-                ", username='" + username + '\'' +
-                ", authoritie='" + authoritie + '\'' +
                 '}';
     }
 }
