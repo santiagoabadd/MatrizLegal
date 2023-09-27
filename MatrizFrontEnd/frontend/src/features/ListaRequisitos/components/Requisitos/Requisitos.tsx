@@ -15,12 +15,17 @@ export const Requisitos: React.FC = () => {
 
   const [requirements, setRequirements] = useState<requisitoObjeto[]>([]);
 
+  const token = localStorage.getItem('jwtToken');
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
+
   useEffect(() => {
     loadRequirements();
   }, []);
 
   const loadRequirements = async () => {
-    const result = await axios.get("http://localhost:8080/requisito");
+    const result = await axios.get("http://localhost:8080/requirement",{headers});
     setRequirements(result.data);
   };
   return (

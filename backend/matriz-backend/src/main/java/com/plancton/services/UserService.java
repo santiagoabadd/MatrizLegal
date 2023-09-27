@@ -7,6 +7,7 @@ import com.plancton.exceptions.EmailFailedToSendException;
 import com.plancton.exceptions.IncorrectVerificationCodeException;
 import com.plancton.exceptions.UserDoesNotExistException;
 import com.plancton.models.ApplicationUser;
+import com.plancton.models.Customer;
 import com.plancton.models.RegistrationObject;
 import com.plancton.models.Role;
 import com.plancton.repositories.CustomerRepository;
@@ -47,6 +48,10 @@ public class UserService implements UserDetailsService {
         this.customerRepository = customerRepository;
         this.mailService=mailService;
         this.passwordEncoder=passwordEncoder;
+    }
+
+    public List<ApplicationUser> getByCystomer(Customer customer){
+       return userRepo.getByCustomer(customer);
     }
 
     public ApplicationUser getUserByUsername(String username){

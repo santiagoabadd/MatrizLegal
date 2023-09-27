@@ -54,7 +54,7 @@ export const SideBarMenu: React.FC = () => {
             <LibraryBooksIcon sx={{ marginRight: "10px", width: "20px" }} />
             Normativas
           </Link>
-          <Link to="/" className="side-bar-button-container">
+          <Link to="/usuarios" className="side-bar-button-container">
             <GroupIcon
               sx={{
                 marginRight: "10px",
@@ -63,7 +63,7 @@ export const SideBarMenu: React.FC = () => {
             />
             Cliente
           </Link>
-          <Link to="/" className="side-bar-button-container">
+          <Link to="/plantas" className="side-bar-button-container">
             <ApartmentIcon
               sx={{
                 marginRight: "10px",

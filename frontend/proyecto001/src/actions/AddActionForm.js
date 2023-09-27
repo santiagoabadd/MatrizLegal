@@ -21,10 +21,17 @@ export default function AddActionForm() {
     setActionData({ ...actionData, [name]: value });
   };
 
+  const token = localStorage.getItem('jwtToken');
+
+      // Configura un objeto de cabecera con el token JWT
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`http://localhost:8080/requirement/${id}/addAction`, actionData);
+      await axios.post(`http://localhost:8080/requirement/${id}/addAction`, actionData,{headers});
       navigate('/')
       // Redireccionar o realizar alguna acción después de agregar la acción al requisito
     } catch (error) {

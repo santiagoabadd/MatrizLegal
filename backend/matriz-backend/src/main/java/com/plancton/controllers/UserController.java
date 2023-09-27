@@ -3,6 +3,7 @@ package com.plancton.controllers;
 
 import com.plancton.models.*;
 import com.plancton.repositories.UserRepository;
+import com.plancton.services.TokenService;
 import com.plancton.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,8 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService service;
-
-
+    @Autowired
+    TokenService tokenService;
 
 
 
@@ -38,10 +39,11 @@ public class UserController {
     }
 
     @GetMapping("/user")
-    public List<ApplicationUser> listRubros(){
+    public List<ApplicationUser> listRubros(@RequestHeader("Authorization") String token){
 
 
-        return service.getAll();
+        Customer customer=service.getUserByUsername(tokenService.getUsernameFromToken(token)).getCustomer();
+        return service.getByCystomer(customer);
 
     }
 

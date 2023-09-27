@@ -13,22 +13,123 @@ export const Normativas: React.FC = () => {
   }
 
   const [normativas, setNormativas] = useState<normativaObjeto[]>([]);
+  const [filtroNorma, setFiltroNorma] = useState('');
+  const [filtroTitulo, setFiltroTitulo] = useState('');
+  const [filtroCategoria, setFiltroCategoria] = useState('');
+  const [filtroOrganismo, setFiltroOrganismo] = useState('');
+  const [filtroJurisdiccion, setFiltroJurisdiccion] = useState('');
+  
 
   //const { id } = useParams();
 
   useEffect(() => {
     loadNormativas();
-  }, []);
+  }, [filtroNorma, filtroTitulo, filtroCategoria, filtroOrganismo, filtroJurisdiccion]);
+
+  
+  const token = localStorage.getItem('jwtToken');
+
+  // Configura un objeto de cabecera con el token JWT
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
 
   const loadNormativas = async () => {
-    const result = await axios.get("http://localhost:8080/normativa");
-    setNormativas(result.data);
+    try {
+      const result = await axios.get(
+        `http://localhost:8080/normativas`,
+        {
+          params: {
+            partialNorma: filtroNorma,
+            partialTitle: filtroTitulo,
+            partialCategoria: filtroCategoria,
+            partialOrganismo: filtroOrganismo,
+            partialJurisdiccion: filtroJurisdiccion,
+             // Si es null, envía una cadena vacía
+          },
+          headers,
+        }
+      );
+      setNormativas(result.data);
+    } catch (error) {
+      console.error('Error al realizar la solicitud:', error);
+    }
   };
+
+  const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+  
+    switch (name) {
+      case 'filtroNorma':
+        setFiltroNorma(value);
+        break;
+      case 'filtroTitulo':
+        setFiltroTitulo(value);
+        break;
+      case 'filtroCategoria':
+        setFiltroCategoria(value);
+        break;
+      case 'filtroOrganismo':
+        setFiltroOrganismo(value);
+        break;
+      case 'filtroJurisdiccion':
+        setFiltroJurisdiccion(value);
+        break;
+      default:
+        break;
+    }
+  };
+  
+  
+  
+  
+  
+  
+  
   return (
     <div className="normativas-container">
       <div className="normativas-header-group">
         <h4>Listado de normativas</h4>
       </div>
+      <div className="normativas-filtro-container">
+        <input className="normativas-filtro-input"
+          type="text"
+          placeholder="Filtrar por norma"
+          name="filtroNorma"
+          value={filtroNorma}
+          onChange={handleFilterChange}
+        />
+        <input className="normativas-filtro-input"
+          type="text"
+          placeholder="Filtrar por título"
+          name="filtroTitulo"
+          value={filtroTitulo}
+          onChange={handleFilterChange}
+        />
+        <input className="normativas-filtro-input"
+          type="text"
+          placeholder="Filtrar por categoría"
+          name="filtroCategoria"
+          value={filtroCategoria}
+          onChange={handleFilterChange}
+        />
+        <input className="normativas-filtro-input"
+          type="text"
+          placeholder="Filtrar por organismo"
+          name="filtroOrganismo"
+          value={filtroOrganismo}
+          onChange={handleFilterChange}
+        />
+        <input className="normativas-filtro-input"
+          type="text"
+          placeholder="Filtrar por jurisdicción"
+          name="filtroJurisdiccion"
+          value={filtroJurisdiccion}
+          onChange={handleFilterChange}
+        />
+        
+      </div>
+      
       <table className="normativas-tabla">
         <thead>
           <tr>

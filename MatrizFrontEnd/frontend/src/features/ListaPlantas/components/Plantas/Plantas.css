@@ -1,0 +1,60 @@
+.plantas-container {
+    border-radius: 5px;
+    color: rgba(255, 255, 255, 0.7);
+    border-bottom: 1px solid black;
+    padding: 15px 15px;
+  }
+  .planta-table-headitem {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 12px 7px;
+    text-align: left;
+  }
+  
+  .plantas-header-group {
+    margin-bottom: 12px;
+    font-size: 1.0625rem;
+  }
+  
+  .plantas-header-group > h4 {
+    font-weight: 100;
+    padding: 20px 20px;
+  }
+  .plantas-table {
+    border-collapse: collapse;
+    border-spacing: 2px;
+    width: 100%;
+  }
+  
+  .planta-table-item {
+    padding: 12px 7px;
+    font-size: 14px;
+    text-align: left;
+  }
+  
+  .planta-table-row {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .planta-table-btn-edit {
+    background-color: #007bff; 
+    color: #fff; 
+    padding: 5px 10px; 
+    border: none;
+    border-radius: 4px; 
+    cursor: pointer; 
+    margin-right: 5px; 
+    text-decoration: none;
+  }
+  
+ 
+  .planta-table-btn-delete {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 5px 10px; 
+    border: none; 
+    border-radius: 4px;
+    cursor: pointer; 
+  }
+  
