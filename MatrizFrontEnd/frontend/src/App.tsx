@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { RequisitosPage } from "./pages/RequisitosPage";
 import { Landing } from "./pages/Landing";
+import { CrearRequisitoPage } from "./pages/CrearRequisitoPage";
 
 const theme: Theme = {
   colors: {
@@ -35,6 +36,7 @@ export const App = () => {
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
         <Route path="/requisitos" element={<RequisitosPage />} />
+        <Route path="/crear-requisito" element={<CrearRequisitoPage />} />
       </Routes>
     </ThemeProvider>
   );
