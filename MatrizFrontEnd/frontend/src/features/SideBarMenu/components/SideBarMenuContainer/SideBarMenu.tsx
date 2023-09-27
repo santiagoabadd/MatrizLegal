@@ -41,7 +41,7 @@ export const SideBarMenu: React.FC = () => {
             />
             Listar Requisitos
           </Link>
-          <Link to="/" className="side-bar-button-container">
+          <Link to="/crear-requisito" className="side-bar-button-container">
             <AddToPhotosIcon
               sx={{
                 marginRight: "10px",
