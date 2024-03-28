@@ -10,7 +10,6 @@ import java.util.Set;
 
 @Entity
 @Table(name="plant")
-@JsonIdentityInfo(scope = Plant.class,generator = ObjectIdGenerators.PropertyGenerator.class, property = "plantId")
 public class Plant {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,7 +33,7 @@ public class Plant {
     @Column(name = "estado",length = 60,nullable = false)
     private String estado;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="customer_id")
     Customer customer;
 
@@ -67,6 +66,7 @@ public class Plant {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
+
 
     public Set<Requirement> getRequirements() {
         return requirements;

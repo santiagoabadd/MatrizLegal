@@ -26,10 +26,10 @@ public class NormativaService {
     }
 
     public List<Normativa> findNormativasByPartialFields(
-            String partialNorma, String partialTitle, String partialCategoria,
+            String partialNorma, String partialTitle, String partialCategoria,String partialAuthority,
             String partialOrganismo, String partialJurisdiccion, Boolean partialCurrent) {
         return normativaRepo.findNormativasByPartialFields(
-                partialNorma, partialTitle, partialCategoria,
+                partialNorma, partialTitle, partialCategoria,partialAuthority,
                 partialOrganismo, partialJurisdiccion, partialCurrent);
     }
 

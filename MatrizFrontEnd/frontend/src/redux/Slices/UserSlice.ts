@@ -82,7 +82,7 @@ export const UserSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(loginUser.fulfilled, (state, action) => {
-      state = {
+      return {
         ...state,
         loggedIn: {
           userId: action.payload.user.userId,
@@ -98,31 +98,31 @@ export const UserSlice = createSlice({
         },
         token: action.payload.token,
       };
-      return state;
+      
     });
     builder.addCase(loginUser.pending, (state, action) => {
-      state = {
+      return{
         ...state,
         error: false,
       };
-      return state;
+      
     });
 
     builder.addCase(loginUser.rejected, (state, action) => {
-      state = {
+      return {
         ...state,
         error: true,
       };
-      return state;
+      
     });
 
     builder.addCase(verifyUsername.fulfilled, (state, action) => {
-      state = {
+      return {
         ...state,
         username: action.payload,
       };
 
-      return state;
+      
     });
 
     builder.addCase(verifyUsername.pending, (state, action) => {

@@ -26,16 +26,19 @@ export const LoginFormTwo: React.FC<LoginFormTwoProps> = ({
 
   const [active, setActive] = useState<boolean>(false);
 
+  const [redirected, setRedirected] = useState(false);
+
   const toggleView = () => {
     setActive(!active);
   };
 
   useEffect(() => {
-    if (state.loggedIn) {
+    if (state.loggedIn && !redirected) {
       navigate("/home");
-      return () => {};
+      setRedirected(true); // Marcar que ya se ha redirigido
     }
-  });
+  }, [state.loggedIn, redirected]);
+
 
   return (
     <div className="login-form-two-container">

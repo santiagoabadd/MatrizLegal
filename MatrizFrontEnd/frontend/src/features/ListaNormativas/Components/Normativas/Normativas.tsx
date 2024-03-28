@@ -18,16 +18,17 @@ export const Normativas: React.FC = () => {
   const [filtroCategoria, setFiltroCategoria] = useState('');
   const [filtroOrganismo, setFiltroOrganismo] = useState('');
   const [filtroJurisdiccion, setFiltroJurisdiccion] = useState('');
+  const [filtroAuthority, setfiltroAuthority] = useState('');
   
 
   //const { id } = useParams();
 
   useEffect(() => {
     loadNormativas();
-  }, [filtroNorma, filtroTitulo, filtroCategoria, filtroOrganismo, filtroJurisdiccion]);
+  }, [filtroNorma, filtroTitulo, filtroCategoria, filtroOrganismo, filtroJurisdiccion,filtroAuthority]);
 
   
-  const token = localStorage.getItem('jwtToken');
+  const token = localStorage.getItem('token');
 
   // Configura un objeto de cabecera con el token JWT
   const headers = {
@@ -45,6 +46,7 @@ export const Normativas: React.FC = () => {
             partialCategoria: filtroCategoria,
             partialOrganismo: filtroOrganismo,
             partialJurisdiccion: filtroJurisdiccion,
+            partialAuthority: filtroAuthority
              // Si es null, envía una cadena vacía
           },
           headers,
@@ -68,6 +70,9 @@ export const Normativas: React.FC = () => {
         break;
       case 'filtroCategoria':
         setFiltroCategoria(value);
+        break;
+      case 'filtroAuthority':
+          setfiltroAuthority(value);  
         break;
       case 'filtroOrganismo':
         setFiltroOrganismo(value);
@@ -115,6 +120,13 @@ export const Normativas: React.FC = () => {
         />
         <input className="normativas-filtro-input"
           type="text"
+          placeholder="Filtrar por Autoridad"
+          name="filtroAuthority"
+          value={filtroAuthority}
+          onChange={handleFilterChange}
+        />
+        <input className="normativas-filtro-input"
+          type="text"
           placeholder="Filtrar por organismo"
           name="filtroOrganismo"
           value={filtroOrganismo}
@@ -151,9 +163,7 @@ export const Normativas: React.FC = () => {
             <th className="normativa-table-headitem" scope="col">
               Actual
             </th>
-            <th className="normativa-table-headitem" scope="col">
-              Acciones
-            </th>
+           
           </tr>
         </thead>
         <tbody>

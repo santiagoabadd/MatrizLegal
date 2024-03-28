@@ -55,6 +55,7 @@ public class UserService implements UserDetailsService {
     }
 
     public ApplicationUser getUserByUsername(String username){
+        System.out.println(username);
         return userRepo.findByUsername(username).orElseThrow(UserDoesNotExistException::new);
     }
 

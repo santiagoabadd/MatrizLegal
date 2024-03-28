@@ -1,15 +1,21 @@
 package com.plancton.services;
 
+import com.plancton.models.Category;
 import com.plancton.models.Customer;
 import com.plancton.models.Plant;
 import com.plancton.models.Requirement;
 import com.plancton.repositories.CustomerRepository;
 import com.plancton.repositories.RequirementRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class RequirementService {
@@ -19,6 +25,8 @@ public class RequirementService {
         this.requirementRepo=requirementRepo;
     }
 
+    @PersistenceContext
+    private EntityManager entityManager;
     public Requirement registerRequirement(Requirement object) {
         try{
             return requirementRepo.save(object);
@@ -28,16 +36,59 @@ public class RequirementService {
         }
     }
 
-    public List<Requirement> getAll(){
-        return  requirementRepo.findAll();
+
+
+    public List<Requirement> getAll() {
+
+            List<Requirement> lista = requirementRepo.findAll();
+
+        for (Requirement requirement : lista) {
+            Hibernate.initialize(requirement.getPlant());
+            Hibernate.initialize(requirement.getCategory());
+        }
+
+        return lista;
+
     }
+
+
 
     public Requirement getById(Integer id){
         return  requirementRepo.getById(id);
     }
 
     public List<Requirement> getRequirementsByCustomer(Customer customer){
-        return requirementRepo.getByCustomer(customer);
+
+
+        List<Requirement> lista = requirementRepo.getByCustomer(customer);
+
+        for (Requirement requirement : lista) {
+            Hibernate.initialize(requirement.getPlant());
+            Hibernate.initialize(requirement.getCategory());
+        }
+
+        return lista;
+
+    }
+
+    public List<Requirement> getRequirementsByCategory(Category category,Customer customer){
+        return requirementRepo.getByCustomerAndCategory(customer,category);
+    }
+
+    public List<Object[]> getNumberOfRequirementPerCategory(){
+        return requirementRepo.countRequirementsByCategory();
+    }
+
+    public List<Object[]> getNumberOfCompliance(){
+        return requirementRepo.countRequirementsByCompliance();
+    }
+
+    public List<Object[]> getNumberOfState(){
+        return requirementRepo.countRequirementsByState();
+    }
+
+    public List<Object[]> getNumberOfRequirementPerType(){
+        return requirementRepo.countRequirementsByType();
     }
 
     public Optional<Requirement> updateRequirement(Integer id, Requirement newRequirement) {

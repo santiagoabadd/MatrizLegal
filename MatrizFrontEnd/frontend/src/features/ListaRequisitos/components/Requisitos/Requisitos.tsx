@@ -1,10 +1,11 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-
+import { useNavigate } from 'react-router-dom';
 import "./Requisitos.css";
 
 export const Requisitos: React.FC = () => {
   interface requisitoObjeto {
+    requirementId:number;
     title: string;
     actualState: boolean;
     requirement: string;
@@ -13,9 +14,11 @@ export const Requisitos: React.FC = () => {
     relevance: string;
   }
 
+  let navigate = useNavigate();
+
   const [requirements, setRequirements] = useState<requisitoObjeto[]>([]);
 
-  const token = localStorage.getItem('jwtToken');
+  const token = localStorage.getItem('token');
   const headers = {
     Authorization: `Bearer ${token}`,
   };
@@ -23,6 +26,10 @@ export const Requisitos: React.FC = () => {
   useEffect(() => {
     loadRequirements();
   }, []);
+
+  const handleRequirementClick = (id: string)=>{
+      navigate(`/requisito/${id}`);
+  };
 
   const loadRequirements = async () => {
     const result = await axios.get("http://localhost:8080/requirement",{headers});
@@ -59,7 +66,7 @@ export const Requisitos: React.FC = () => {
         <tbody>
           {requirements.map((requirement, index) => (
             <tr className="requisitos-table-row">
-              <td className="requisitos-table-item">{requirement.title}</td>
+              <td className="requisitos-table-item-title" onClick={() =>  handleRequirementClick(`${requirement.requirementId.toString()}`)}>{requirement.title}</td>
               <td className="requisitos-table-item">
                 {requirement.actualState}
               </td>

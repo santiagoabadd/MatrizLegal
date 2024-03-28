@@ -29,7 +29,7 @@ import "./Plantas.css"
       loadPlants();
     }, []);
 
-  const token = localStorage.getItem('jwtToken');
+  const token = localStorage.getItem('token');
 
       // Configura un objeto de cabecera con el token JWT
       const headers = {
@@ -69,8 +69,7 @@ import "./Plantas.css"
               <th className="planta-table-headitem" scope="col">Fecha de Alta</th>
               <th className="planta-table-headitem" scope="col">Jurisdicción</th>
               <th className="planta-table-headitem" scope="col">Activo</th>
-              <th className="planta-table-headitem" scope="col">Estado</th>
-              <th className="planta-table-headitem" scope="col">Acciones</th>
+              <th className="planta-table-headitem" scope="col">Estado</th> 
             </tr>
           </thead>
           <tbody>
@@ -84,21 +83,7 @@ import "./Plantas.css"
                 <td className="planta-table-item">{plant.jurisdiction}</td>
                 <td className="planta-table-item">{plant.active ? 'Activo' : 'Inactivo'}</td>
                 <td className="planta-table-item">{plant.estado}</td>
-                <td className="planta-table-item">
-                  
-                  <Link
-                    className="planta-table-btn-edit"
-                    to={`/editplant/${plant.plantId}`}
-                  >
-                    Editar
-                  </Link>
-                  <button
-                    className="planta-table-btn-delete"
-                    onClick={() => deletePlant(plant.plantId)}
-                  >
-                    Eliminar
-                  </button>
-                </td>
+                
               </tr>
             ))}
           </tbody>

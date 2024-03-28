@@ -10,7 +10,8 @@ import KeyboardDoubleArrowDownIcon from "@mui/icons-material/KeyboardDoubleArrow
 import "./LoginFormOne.css";
 import "../../../../assets/global.css";
 import { verifyUsername } from "../../../../redux/Slices/UserSlice";
-
+import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 interface LoginFormOneProps {
   forgotPassword: () => void;
 }
@@ -20,12 +21,14 @@ export const LoginFormOne: React.FC<LoginFormOneProps> = ({
 }) => {
   const dispatch: AppDispatch = useDispatch();
   const state = useSelector((state: RootState) => state.user);
-
+  const navigate = useNavigate();
   const [credential, setCredential] = useState<string>("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setCredential(e.target.value);
   };
+
+  
 
   const findUsername = (): void => {
     let body = {
@@ -47,7 +50,7 @@ export const LoginFormOne: React.FC<LoginFormOneProps> = ({
 
   return (
     <div className="login-form-one-container">
-      <h1 className="login-form-header">Loguearse en Hasu</h1>
+      <h1 className="login-form-header">Loguearse en Hasu </h1>
       <div className="login-form-one-divider">
         <div className="login-form-one-line"></div>
         <p className="login-form-one-or">
@@ -81,8 +84,10 @@ export const LoginFormOne: React.FC<LoginFormOneProps> = ({
         </button>
       </div>
 
+    
+
       <p className="login-form-one-text color-gray">
-        No tienes una cuenta? Contactanos
+        No tienes una cuenta? Contactanos wevap32433@cabose.com
         <span className="link color-blue" onClick={() => {}}>
           Aqui
         </span>

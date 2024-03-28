@@ -26,11 +26,13 @@ public class RequirementController {
     private PlantService servicePlant;
 
     @Autowired
+    private CategoryService serviceCategory;
+
+    @Autowired
     TokenService tokenService;
     @Autowired
     private UserService serviceUser;
-    @Autowired
-    private CategoryService serviceCategory;
+
     @Autowired
     private CustomerService serviceCustomer;
 
@@ -40,6 +42,38 @@ public class RequirementController {
         Customer customer=serviceUser.getUserByUsername(tokenService.getUsernameFromToken(token)).getCustomer();
         return service.getRequirementsByCustomer(customer);
 
+    }
+
+
+
+
+    @GetMapping("/requirement/category/{id}")
+    public List<Requirement> listRequirementsCategory(@PathVariable Integer id,@RequestHeader("Authorization") String token){
+
+        Customer customer=serviceUser.getUserByUsername(tokenService.getUsernameFromToken(token)).getCustomer();
+        Category category1=serviceCategory.getById(id);
+        return service.getRequirementsByCategory(category1,customer);
+
+    }
+
+    @GetMapping("/requirement/categoryCount")
+    public List<Object[]> requirementPerCategoryCount(@RequestHeader("Authorization") String token){
+        return service.getNumberOfRequirementPerCategory();
+    }
+
+    @GetMapping("/requirement/complianceCount")
+    public List<Object[]> requirementPerCompliance(@RequestHeader("Authorization") String token){
+        return service.getNumberOfCompliance();
+    }
+
+    @GetMapping("/requirement/stateCount")
+    public List<Object[]> requirementPerState(@RequestHeader("Authorization") String token){
+        return service.getNumberOfState();
+    }
+
+    @GetMapping("/requirement/typeCount")
+    public List<Object[]> requirementPerType(@RequestHeader("Authorization") String token){
+        return service.getNumberOfRequirementPerType();
     }
 
     @GetMapping("/requirement/{id}")

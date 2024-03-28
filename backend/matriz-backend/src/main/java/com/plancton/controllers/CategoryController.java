@@ -25,6 +25,14 @@ public class CategoryController {
 
     }
 
+    @GetMapping("/category/tipo/{tipo}")
+    public List<Category> listCategorys(@PathVariable String tipo,@RequestHeader("Authorization") String token){
+
+
+        return repo.findByTipo(tipo);
+
+    }
+
     @GetMapping("/category/{id}")
     Optional<Category> getCategoryById(@PathVariable Integer id){
         return repo.findById(id);

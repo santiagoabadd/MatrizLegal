@@ -30,7 +30,7 @@ import "./Usuarios.css"
       loadUsers();
     }, []);
 
-  const token = localStorage.getItem('jwtToken');
+  const token = localStorage.getItem('token');
 
       // Configura un objeto de cabecera con el token JWT
       const headers = {

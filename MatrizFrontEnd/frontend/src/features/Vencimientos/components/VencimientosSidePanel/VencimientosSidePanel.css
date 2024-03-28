@@ -1,0 +1,167 @@
+.sidepanel-container-div{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    background-color: beige;
+    padding-top: 80px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #060818;
+    border-left: #0e1726 1px solid;
+    border-radius: 5px;
+    z-index: 1;
+    
+    align-items: center;
+
+}
+.sidepanel-vencimientos-grid {
+ 
+   margin-top: 20px;
+    display: grid;
+    width: 100%;
+    padding: 0px 15px;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Dos columnas de ancho mínimo de 200px */
+    grid-gap: 10px; /* Espacio entre los elementos */
+  }
+  
+  .vencimiento-item {
+    border: 1px solid #ccc; /* Borde para visualizar los elementos */
+    padding: 10px 00px;
+    text-align: center;
+    max-height: 110px;
+    color: #e0e6ed;
+    display: flex;
+    border-radius: 10px;
+    background-color: #2b3553;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .vencimiento-item:hover {
+    cursor: pointer;
+    border-color: rgb(29, 161, 242) !important;
+    box-shadow: 0 10px 20px -10px rgb(16, 112, 172) !important;
+  }
+
+  .vencimiento-item-dia {
+    font-size: 30px;
+    color: rgb(29, 161, 242);
+  }
+
+  .vencimiento-item-mes {
+    font-size: 13px;
+  }
+
+  .vencimiento-item-year {
+    font-size: 20px;
+  }
+
+
+.sidepanel-buttons{
+    
+    display: flex;
+    justify-content: space-between;
+}
+
+.sidepanel-header > h2{
+    color: #e0e6ed;
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    text-align: center;
+    
+}
+
+.sidepanel-buttons-bot{
+    margin-top: auto;
+    padding-bottom:10px ;
+}
+.sidepanel-headers{
+    width: 100%;
+    padding: 0px 15px;
+
+}
+
+.sidepanel-button-2{
+    width: 50%;
+    padding: 0.4375rem 1.25rem;
+    text-shadow: none;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    border: #2b3553 solid 1px;
+    font-weight: normal;
+    white-space: normal;
+    word-wrap: break-word;
+    transition: 0.2s ease-out;
+    touch-action: manipulation;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #0e1726;
+    box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.1);
+    will-change: opacity, transform;
+    transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    margin-bottom: 15px;
+}
+
+.sidepanel-button-1{
+    width: 50%;
+    padding: 0.4375rem 1.25rem;
+    text-shadow: none;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    border: #2b3553 solid 1px;
+    font-weight: normal;
+    white-space: normal;
+    word-wrap: break-word;
+    transition: 0.2s ease-out;
+    touch-action: manipulation;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #0e1726;
+    box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.1);
+    will-change: opacity, transform;
+    transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    margin-bottom: 15px;
+}
+
+.sidepanel-button-3{
+    width: 269px;
+    padding: 0.4375rem 1.25rem;
+    text-shadow: none;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    border: #2b3553 solid 1px;
+    font-weight: normal;
+    white-space: normal;
+    word-wrap: break-word;
+    transition: 0.2s ease-out;
+    touch-action: manipulation;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #0e1726;
+    box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.1);
+    will-change: opacity, transform;
+    transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    margin-bottom: 0px;
+}
+
+.sidepanel-action{
+    margin-right: 100px;
+}
+
+
+ .sidepanel-button-2:hover ,.sidepanel-button-3:hover{
+    color: #fff !important;
+    background-color: rgb(29, 161, 242) !important;
+    box-shadow: 0 10px 20px -10px rgb(16, 112, 172) !important;
+  }
+
+  .sidepanel-button-1:hover{
+    color: #fff !important;
+    background-color: rgb(242, 29, 29) !important;
+    box-shadow: 0 10px 20px -10px rgb(172, 16, 16) !important;
+  }

@@ -9,6 +9,8 @@ export const Landing: React.FC = () => {
   const [login, setLogin] = useState<boolean>(true);
   const [forgotPassword, setForgotPassword] = useState<boolean>(false);
 
+  
+
   const toggleRegister = () => {
     setRegister(!register);
   };

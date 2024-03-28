@@ -58,6 +58,11 @@ public class AuthenticationController {
         return userService.registerUser(ro);
     }
 
+    @GetMapping("/checkToken")
+    public boolean checkToken(@RequestHeader("Authorization") String token){
+        return true;
+    }
+
     @ExceptionHandler({UserDoesNotExistException.class})
     public ResponseEntity<String> handleUserDoesntExist(){
         return new ResponseEntity<String>("The user you are looking for does not exist",HttpStatus.NOT_FOUND);

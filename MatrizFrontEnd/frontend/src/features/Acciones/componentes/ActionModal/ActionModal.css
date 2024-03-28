@@ -1,0 +1,168 @@
+
+
+  .backgroundBlur {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px); /* Adjust the blur amount as needed */
+    z-index: 998; /* Ensure it's above other content */
+  }
+
+  .modal-content-vencimiento {
+    height: auto!important;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Additional styling for your modal */
+    width: 750px;
+    
+    background-color: #0e1726;
+    border-radius: 10px;
+    border: solid 1px rgb(29, 161, 242)  ;
+    display: block;
+    z-index: 999;
+    box-shadow: 0 10px 20px -10px rgb(16, 112, 172) !important;
+    /* Other styles as needed */
+  }
+  .modal-header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    font-size: 1.5rem;
+    padding-bottom:0px ;
+  }
+
+  .modal-header > h2{
+    font-weight: 100;
+    color: #e0e6ed;
+  }
+
+  .modal-button{
+    padding: 0.4375rem 1.25rem;
+    text-shadow: none;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    border: #2b3553 solid 1px;
+    font-weight: normal;
+    white-space: normal;
+    word-wrap: break-word;
+    transition: 0.2s ease-out;
+    touch-action: manipulation;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #0e1726;
+    box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.1);
+    will-change: opacity, transform;
+    transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    margin-bottom: 15px;
+    margin-left: 10px;
+  }
+  
+  .modal-button:hover {
+    color: #fff !important;
+    background-color: rgb(29, 161, 242) !important;
+    box-shadow: 0 10px 20px -10px rgb(16, 112, 172) !important;
+  }
+
+  .modal-button-delete{
+    margin-left: 10px;
+    padding: 0.4375rem 1.25rem;
+    text-shadow: none;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    border: #2b3553 solid 1px;
+    font-weight: normal;
+    white-space: normal;
+    word-wrap: break-word;
+    transition: 0.2s ease-out;
+    touch-action: manipulation;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #0e1726;
+    box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.1);
+    will-change: opacity, transform;
+    transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    margin-bottom: 15px;
+  }
+
+  .modal-buttons{
+    margin-top: 10px;
+  }
+
+  .modal-button-delete:hover {
+    color: #fff !important;
+    background-color: rgb(242, 29, 29) !important;
+    box-shadow: 0 10px 20px -10px rgb(172, 16, 16) !important;
+  }
+
+  .modal-button-edit-avance{
+    
+    padding: 0.4375rem 1.25rem;
+    text-shadow: none;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    border: #2b3553 solid 1px;
+    font-weight: normal;
+    white-space: normal;
+    word-wrap: break-word;
+    transition: 0.2s ease-out;
+    touch-action: manipulation;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #0e1726;
+    box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.1);
+    will-change: opacity, transform;
+    transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    margin-bottom: 15px;
+  }
+
+  .modal-button-edit-avance:hover {
+    color: #fff !important;
+    background-color: rgb(89, 242, 29) !important;
+    box-shadow: 0 10px 20px -10px rgb(47, 172, 16) !important;
+  }
+
+  .modal-details{
+    width: 100%;
+    padding: 30px;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .modal-details > p{
+    padding-top: 10px;
+    color: #e0e6ed;
+  }
+
+  .modal-requirement{
+    display: flex;
+    margin-top: 10px;
+    align-items: center;
+  }
+
+  .modal-requirement > p{
+    margin-right: 15px;
+    color: #e0e6ed;
+  }
+
+  .modal-requirement-icon:hover{
+    color: rgb(29, 161, 242);
+  }
+
+  .modal-requirement-icon{
+    color: #e0e6ed;
+  }
+
+  .modal-requirement-link{
+    text-decoration: none;
+    color: inherit;
+  }
+

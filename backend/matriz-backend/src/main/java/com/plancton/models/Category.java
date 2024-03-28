@@ -10,7 +10,6 @@ import java.util.Set;
 
 @Entity
 @Table(name="category")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "categoryId")
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,6 +18,11 @@ public class Category {
     @Column(name = "category")
     private String category;
 
+    @Column(name = "tipo")
+    private String tipo;
+
+    @Column(name="imageId")
+    private String imageId;
 
 
     @JsonIgnore
@@ -34,16 +38,33 @@ public class Category {
         this.requirements = new HashSet<>();
     }
 
-    public Category(String category) {
+    public Category(String category,String tipo,String imageId) {
+        this.imageId=imageId;
+        this.tipo=tipo;
         this.category = category;
         this.normativas = new HashSet<>();
         this.requirements = new HashSet<>();
+    }
+
+    public String getImageId() {
+        return imageId;
+    }
+
+    public void setImageId(String imageId) {
+        this.imageId = imageId;
     }
 
     public Integer getCategoryId() {
         return categoryId;
     }
 
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 
     public void setCategoryId(Integer categoryId) {
         this.categoryId = categoryId;
@@ -57,6 +78,7 @@ public class Category {
     public Set<Normativa> getNormativas() {
         return normativas;
     }
+
 
     public void setNormativas(Set<Normativa> normativas) {
         this.normativas = normativas;

@@ -32,6 +32,10 @@ public class CategoryService {
         return  categoryRepo.getById(id);
     }
 
+    public List<Category> getByTipo(String tipo) {
+        return categoryRepo.findByTipo(tipo);
+    }
+
     public List<Category> getAll(){
         return  categoryRepo.findAll();
     }

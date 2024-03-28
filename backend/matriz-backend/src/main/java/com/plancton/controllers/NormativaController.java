@@ -189,6 +189,7 @@ public class NormativaController {
             @RequestParam(required = false) String partialNorma,
             @RequestParam(required = false) String partialTitle,
             @RequestParam(required = false) String partialCategoria,
+            @RequestParam(required = false) String partialAuthority,
             @RequestParam(required = false) String partialOrganismo,
             @RequestParam(required = false) String partialJurisdiccion,
             @RequestParam(required = false) Boolean partialCurrent)
@@ -197,6 +198,7 @@ public class NormativaController {
                 partialNorma,
                 partialTitle,
                 partialCategoria,
+                partialAuthority,
                 partialOrganismo,
                 partialJurisdiccion,
                 partialCurrent);

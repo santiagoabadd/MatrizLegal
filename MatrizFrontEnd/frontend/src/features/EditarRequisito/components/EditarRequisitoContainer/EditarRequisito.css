@@ -1,0 +1,144 @@
+.crear-requisito {
+    margin-top: 20px;
+    background-color:  #0e1726;
+    border-radius: 15px;
+  }
+  
+  .crear-requisito-header {
+    padding: 20px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 17px;
+  }
+  
+  .crear-requisitos-form {
+    padding: 15px;
+  }
+  .crear-requisitos-button {
+    display: flex;
+    
+    justify-content: center;
+  
+  }
+  
+  .crear-requisitos-button > button{
+    padding: 0.4375rem 1.25rem;
+    text-shadow: none;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    border: #2b3553 solid 1px;
+    font-weight: normal;
+    white-space: normal;
+    word-wrap: break-word;
+    transition: 0.2s ease-out;
+    touch-action: manipulation;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #0e1726;
+    box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.1);
+    will-change: opacity, transform;
+    transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    margin-bottom: 15px;
+  }
+  
+  .crear-requisitos-button > button:hover {
+    color: #fff !important;
+    background-color: rgb(29, 161, 242) !important;
+    box-shadow: 0 10px 20px -10px rgb(16, 112, 172) !important;
+  }
+  
+  .crear-requisitos-group {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  @media(min-width:800px){
+    .crear-requisitos-unit-1 {
+      width: 100%;
+    }
+    .crear-requisitos-unit-2 {
+      width: 100%;
+    }
+    .crear-requisitos-unit-3 {
+      width: 100%;
+    }
+    .crear-requisitos-unit-4 {
+      width: 100%;
+    }
+    .crear-requisitos-unit-5 {
+      width: 100%;
+    }
+    .crear-requisitos-unit-6{
+      width: 100%;
+    }
+    .crear-requisitos-unit-7 {
+      width: 100%;
+    }
+    .crear-requisitos-unit-8 {
+      width: 100%;
+    }
+  }
+  
+  @media(min-width:700px){
+    .crear-requisitos-unit-1 {
+      width: 100%;
+    }
+    .crear-requisitos-unit-2 {
+      width: 100%;
+    }
+    .crear-requisitos-unit-3 {
+      width: 100%;
+    }
+    .crear-requisitos-unit-4 {
+      width: 100%;
+    }
+    .crear-requisitos-unit-5 {
+      width: 100%;
+    }
+    .crear-requisitos-unit-6{
+      width: 100%;
+    }
+    .crear-requisitos-unit-7 {
+      width: 100%;
+    }
+    .crear-requisitos-unit-8 {
+      width: 100%;
+    }
+    }
+  
+  
+  @media(min-width:1000px){
+    .crear-requisitos-unit-1 {
+      width: 50%;
+    }
+    .crear-requisitos-unit-2 {
+      width: 50%;
+    }
+    .crear-requisitos-unit-3 {
+      width: 100%;
+    }
+    .crear-requisitos-unit-4 {
+      width: 33.3%;
+    }
+    .crear-requisitos-unit-5 {
+      width: 33.3%;
+    }
+    .crear-requisitos-unit-6{
+      width: 33.3%;
+    }
+    .crear-requisitos-unit-7 {
+      width: 50%;
+    }
+    .crear-requisitos-unit-8 {
+      width: 50%;
+    }
+  }
+  
+  
+  .crear-requisitos-group > div {
+    padding-left: 7px;
+    margin-bottom: 20px;
+  }
+  
+  
+  

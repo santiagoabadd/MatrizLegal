@@ -21,6 +21,7 @@ public interface NormativaRepository extends JpaRepository<Normativa,Long> {
             "WHERE (:partialNorma IS NULL OR n.norma LIKE %:partialNorma%) " +
             "AND (:partialTitle IS NULL OR n.title LIKE %:partialTitle%) " +
             "AND (:partialCategoria IS NULL OR c.category LIKE %:partialCategoria%) " +
+            "AND (:partialAuthority IS NULL OR c.category LIKE %:partialAuthority%) " +
             "AND (:partialOrganismo IS NULL OR n.organism LIKE %:partialOrganismo%) " +
             "AND (:partialJurisdiccion IS NULL OR n.jurisdiction LIKE %:partialJurisdiccion%) " +
             "AND (:partialCurrent IS NULL OR n.current = :partialCurrent)")
@@ -28,6 +29,7 @@ public interface NormativaRepository extends JpaRepository<Normativa,Long> {
             @Param("partialNorma") String partialNorma,
             @Param("partialTitle") String partialTitle,
             @Param("partialCategoria") String partialCategoria,
+            @Param("partialAuthority") String partialAuthority,
             @Param("partialOrganismo") String partialOrganismo,
             @Param("partialJurisdiccion") String partialJurisdiccion,
             @Param("partialCurrent") Boolean partialCurrent);

@@ -8,6 +8,8 @@ import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import BeenhereIcon from "@mui/icons-material/Beenhere";
 import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
 import ApartmentIcon from "@mui/icons-material/Apartment";
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import LeaderboardIcon from '@mui/icons-material/Leaderboard';
 
 export const SideBarMenu: React.FC = () => {
   return (
@@ -50,9 +52,28 @@ export const SideBarMenu: React.FC = () => {
             />
             Crear Requisito
           </Link>
-          <Link to="/home" className="side-bar-button-container">
+          <Link to="/vencimientos" className="side-bar-button-container">
+            <CalendarMonthIcon
+              sx={{
+                marginRight: "10px",
+                width: "20px",
+              }}
+            />
+            Vencimientos
+          </Link>
+          <Link to="/normativas" className="side-bar-button-container">
             <LibraryBooksIcon sx={{ marginRight: "10px", width: "20px" }} />
             Normativas
+          </Link>
+          <Link to="/stats" className="side-bar-button-container">
+            <LeaderboardIcon
+              sx={{
+                marginRight: "10px",
+                width: "20px",
+              }}
+            />
+            Estadisticas y Control
+
           </Link>
           <Link to="/usuarios" className="side-bar-button-container">
             <GroupIcon

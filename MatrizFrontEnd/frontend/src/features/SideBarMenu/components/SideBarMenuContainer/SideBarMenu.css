@@ -12,12 +12,9 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  background: rgb(50, 137, 239);
-  background: linear-gradient(
-    158deg,
-    rgba(50, 137, 239, 1) 0%,
-    rgba(23, 225, 211, 1) 100%
-  );
+  background: #060818;
+  border-right: #0e1726 1px solid;
+  
   border-radius: 5px;
 }
 

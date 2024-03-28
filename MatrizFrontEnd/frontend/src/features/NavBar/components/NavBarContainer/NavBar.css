@@ -7,6 +7,7 @@
   display: flex;
   justify-content: space-between;
   background-color: #1e1e2e;
+  z-index: 2;
 }
 .navbar-logo-container {
   height: 100%;

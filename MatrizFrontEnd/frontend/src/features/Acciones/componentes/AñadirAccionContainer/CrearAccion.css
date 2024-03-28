@@ -1,0 +1,203 @@
+.crear-accion {
+    margin-top: 20px;
+    background-color:  #0e1726;
+    border-radius: 15px;
+  }
+  
+  .crear-accion-header {
+    padding: 20px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 17px;
+  }
+  
+  .crear-acciones-form {
+    padding: 15px;
+  }
+  .crear-acciones-button {
+    display: flex;
+    
+    justify-content: center;
+  
+  }
+
+  .crear-acciones-fecha{
+    height: fit-content;
+  width: 100%;
+  height: 56px;
+  border-radius: 5px;
+  border: 1px solid rgb(43, 53, 83);
+  }
+
+  .crear-acciones-fecha:focus-within{
+    height: fit-content;
+  width: 100%;
+  height: 56px;
+  border-radius: 5px;
+  border: 1px solid rgb(29, 161, 242);
+  }
+  
+  .crear-acciones-button > button{
+    padding: 0.4375rem 1.25rem;
+    text-shadow: none;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    border: #2b3553 solid 1px;
+    font-weight: normal;
+    white-space: normal;
+    word-wrap: break-word;
+    transition: 0.2s ease-out;
+    touch-action: manipulation;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #0e1726;
+    box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.1);
+    will-change: opacity, transform;
+    transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    margin-bottom: 15px;
+  }
+
+  .form-control-fecha{
+    position: inherit;
+    background-color: #0e1726;
+    color: rgb(170, 184, 194);
+    border: 0px;
+    margin-top: 15px;
+    margin-left: 10px;
+  }
+
+  .form-control-fecha:focus-visible {
+    position: inherit;
+    background-color: #0e1726;
+    color: rgb(170, 184, 194);
+    outline: none!important;
+    margin-top: 15px;
+    margin-left: 10px;
+  }
+
+
+  
+  .crear-acciones-button > button:hover {
+    color: #fff !important;
+    background-color: rgb(29, 161, 242) !important;
+    box-shadow: 0 10px 20px -10px rgb(16, 112, 172) !important;
+  }
+  
+  .crear-acciones-group {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  @media(min-width:800px){
+    .crear-acciones-unit-1 {
+      width: 100%;
+    }
+    .crear-acciones-unit-2 {
+      width: 100%;
+    }
+    .crear-acciones-unit-3 {
+      width: 100%;
+    }
+    .crear-acciones-unit-4 {
+      width: 100%;
+    }
+    .crear-acciones-unit-5 {
+      width: 100%;
+    }
+    .crear-acciones-unit-6{
+      width: 100%;
+    }
+    .crear-acciones-unit-7 {
+      width: 100%;
+    }
+    .crear-acciones-unit-8 {
+      width: 100%;
+    }
+  }
+  
+  @media(min-width:700px){
+    .crear-acciones-unit-1 {
+      width: 100%;
+    }
+    .crear-acciones-unit-2 {
+      width: 100%;
+    }
+    .crear-acciones-unit-3 {
+      width: 100%;
+    }
+    .crear-acciones-unit-4 {
+      width: 100%;
+    }
+    .crear-acciones-unit-5 {
+      width: 100%;
+    }
+    .crear-acciones-unit-6{
+      width: 100%;
+    }
+    .crear-acciones-unit-7 {
+      width: 100%;
+    }
+    .crear-acciones-unit-8 {
+      width: 100%;
+    }
+    }
+    @media(min-width:0px){
+        .crear-acciones-unit-1 {
+          width: 100%;
+        }
+        .crear-acciones-unit-2 {
+          width: 100%;
+        }
+        .crear-acciones-unit-3 {
+          width: 100%;
+        }
+        .crear-acciones-unit-4 {
+          width: 100%;
+        }
+        .crear-acciones-unit-5 {
+          width: 100%;
+        }
+        .crear-acciones-unit-6{
+          width: 100%;
+        }
+        .crear-acciones-unit-7 {
+          width: 100%;
+        }
+        .crear-acciones-unit-8 {
+          width: 100%;
+        }
+        }
+  
+  
+  @media(min-width:1000px){
+    .crear-acciones-unit-1 {
+      width: 50%;
+    }
+    .crear-acciones-unit-2 {
+      width: 50%;
+    }
+    .crear-acciones-unit-3 {
+      width: 100%;
+    }
+    .crear-acciones-unit-4 {
+      width: 33.3%;
+    }
+    .crear-acciones-unit-5 {
+      width: 33.3%;
+    }
+    .crear-acciones-unit-6{
+      width: 33.3%;
+    }
+    .crear-acciones-unit-7 {
+      width: 50%;
+    }
+    .crear-acciones-unit-8 {
+      width: 50%;
+    }
+  }
+  
+  
+  .crear-acciones-group > div {
+    padding-left: 7px;
+    margin-bottom: 20px;
+  }

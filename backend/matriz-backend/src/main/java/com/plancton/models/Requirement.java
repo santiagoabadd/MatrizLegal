@@ -30,12 +30,10 @@ public class Requirement {
     @ManyToOne
     @JoinColumn(name="customer_id")
     Customer customer;
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="category_id")
     Category category;
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="plant_id")
     Plant plant;
     @JsonIgnore

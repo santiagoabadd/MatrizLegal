@@ -20,6 +20,7 @@ import EditCategoryForm from "./categorys/EditCategoryForm";
 import AddActionForm from "./actions/AddActionForm";
 import AddRubroForm from "./rubros/AddRubroForm";
 import RegisterUserForm from "./userss/RegisterUserForm";
+import LoginUserForm from "./userss/LoginUserForm"
 
 function App() {
   return (
@@ -65,6 +66,7 @@ function App() {
           <Route exact path="/addrubro" element={<AddRubroForm />} />
           <Route exact path="/addcategory" element={<AddCategoryForm />} />
           <Route exact path="/register" element={<RegisterUserForm />} />
+          <Route exact path="/login" element={<LoginUserForm/>} />
         </Routes>
       </Router>
     </div>

@@ -6,9 +6,11 @@ import com.plancton.models.Category;
 import com.plancton.models.Requirement;
 import com.plancton.repositories.ActionRepository;
 import com.plancton.repositories.RequirementRepository;
+import com.plancton.services.ActionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,6 +24,9 @@ public class ActionController {
     @Autowired
     private RequirementRepository requirementRepository;
 
+    @Autowired
+    private ActionService service;
+
     @GetMapping("/action")
     public List<Action> listActions(){
 
@@ -30,10 +35,45 @@ public class ActionController {
 
     }
 
+    @GetMapping("/action/requirement/{id}")
+    public List<Action> listActions(@PathVariable Integer id){
+
+        Requirement requirement=requirementRepository.getById(id);
+
+
+
+        return new ArrayList<>(requirement.getActions());
+
+    }
+
+    @GetMapping("/action/expired")
+    public List<Action> listActionsBeforeNow(){
+
+
+        return service.getActionsBeforeToday();
+
+    }
+
+    @GetMapping("/action/actionInfoCount")
+    public List<Object[]> actionInfoCount(@RequestHeader("Authorization") String token){
+        return service.getActionsCount();
+    }
+
+    @GetMapping("/action/close")
+    public List<Action> listActionsCloseToExpire(){
+
+
+        return service.getActionsWithinNextThreeMonths();
+
+    }
+
+
     @GetMapping("/action/{id}")
     Optional<Action> getActionById(@PathVariable Integer id){
         return repo.findById(id);
     }
+
+
 
     @PutMapping ("/action/{id}")
     Optional<Action> updateAction(@RequestBody Action newAction,@PathVariable Integer id){

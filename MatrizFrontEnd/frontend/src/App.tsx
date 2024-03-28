@@ -9,6 +9,16 @@ import { Landing } from "./pages/Landing";
 import { Plantas } from "./features/ListaPlantas/components/Plantas/Plantas";
 import { PlantasPage } from "./pages/PlantasPage";
 import { UsuariosPage } from "./pages/UsuariosPage";
+import { CrearRequisitoPage } from "./pages/CrearRequisitoPage";
+import { RequisitoPage } from "./pages/RequisitoPage";
+import { NormativasPage } from "./pages/NormativasPage";
+import { Categorias } from "./features/Categorias/components/CategoriasContainer/Categorias";
+import { CrearAccionPage } from "./pages/CrearAccionPage";
+import {VencimientosPage} from "./pages/VencimientosPage";
+import { EditActionPage } from "./pages/EditActionPage";
+import { EditarRequisito } from "./features/EditarRequisito/components/EditarRequisitoContainer/EditarRequisito";
+import { EditarRequisitoPage } from "./pages/EditRequisitoPage";
+import { StatsPage } from "./pages/StatsPage";
 
 const theme: Theme = {
   colors: {
@@ -36,10 +46,18 @@ export const App = () => {
       <GlobalStyle />
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/normativas" element={<NormativasPage />} />
         <Route path="/requisitos" element={<RequisitosPage />} />
         <Route path="/plantas" element={<PlantasPage/>} />
         <Route path="/usuarios" element={<UsuariosPage/>} />
+        <Route path="/home" element={<Home/>} />
+        <Route path="/vencimientos" element={<VencimientosPage/>} />
+        <Route path="/accion/:id" element={<CrearAccionPage/>} />
+        <Route path="/crear-requisito" element={<CrearRequisitoPage/>} />
+        <Route path="/requisito/:id" element={<RequisitoPage/>} />
+        <Route path="/accion/edit/:id" element={<EditActionPage/>} />
+        <Route path="/requisito/edit/:id" element={<EditarRequisitoPage/>} />
+        <Route path="/stats" element={<StatsPage/>} />
       </Routes>
     </ThemeProvider>
   );
