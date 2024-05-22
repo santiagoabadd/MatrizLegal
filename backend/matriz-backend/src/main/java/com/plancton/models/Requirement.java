@@ -14,11 +14,11 @@ public class Requirement {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="requirement_id")
     private Integer requirementId;
-    @Column(name="title")
+    @Column(name="title",length = 240,nullable = false)
     private String title;
     @Column(name="actual_state")
     private String actualState;
-    @Column(name="requirement")
+    @Column(name="requirement",length = 340,nullable = false)
     private String requirement;
     @Column(name="type")
     private String type;

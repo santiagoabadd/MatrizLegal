@@ -34,7 +34,6 @@ export const ValidatedTextInput: React.FC<ValidatedTextInputProps> = ({
 
   const update = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setValue(e.target.value);
-    // console.log("send the info back to the dispatcher");
     changeValue(e);
   };
 
@@ -56,6 +55,7 @@ export const ValidatedTextInput: React.FC<ValidatedTextInputProps> = ({
         <input
           className="validated-input-value"
           name={name}
+          autoComplete="off"
           onFocus={focus}
           onChange={update}
           onBlur={focus}

@@ -43,7 +43,7 @@ export const Requisitos: React.FC = () => {
       <table className="requisitos-tabla">
         <thead>
           <tr>
-            <th className="requisitos-table-headitem" scope="col">
+            <th className="requisitos-table-headitem-title" scope="col">
               Titulo
             </th>
             <th className="requisitos-table-headitem" scope="col">
@@ -65,8 +65,8 @@ export const Requisitos: React.FC = () => {
         </thead>
         <tbody>
           {requirements.map((requirement, index) => (
-            <tr className="requisitos-table-row">
-              <td className="requisitos-table-item-title" onClick={() =>  handleRequirementClick(`${requirement.requirementId.toString()}`)}>{requirement.title}</td>
+            <tr className="requisitos-table-row" onClick={() =>  handleRequirementClick(`${requirement.requirementId.toString()}`)}>
+              <td className="requisitos-table-item-title" >{requirement.title}</td>
               <td className="requisitos-table-item">
                 {requirement.actualState}
               </td>

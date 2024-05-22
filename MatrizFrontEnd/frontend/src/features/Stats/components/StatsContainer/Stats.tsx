@@ -132,7 +132,7 @@ const Stats: React.FC = () => {
 
       const fetchRequirementsPerCompliance = async () => {
         try {
-          const response = await axios.get('http://localhost:8080/requirement/stateCount', { headers });
+          const response = await axios.get('http://localhost:8080/requirement/complianceCount', { headers });
           const data: Object[][] = response.data;
         setComplianceData(data);
         
@@ -174,53 +174,48 @@ const Stats: React.FC = () => {
         setShowActions(true);
   };
     
-      const labelsCategory = categoryData.map(item => String(item[0])); // Extraemos el primer elemento de cada subarray
-    const valuesCategory = categoryData.map(item => Number(item[1])); // Extraemos el segundo elemento de cada subarray
+      const labelsCategory = categoryData.map(item => String(item[0]));
+    const valuesCategory = categoryData.map(item => Number(item[1])); 
     
-    // Creamos el objeto 'data' con las etiquetas y valores
     const dataCategory = {
       labels: labelsCategory,
       values: valuesCategory
     };
 
-    const labelsType = typeData.map(item => String(item[0])); // Extraemos el primer elemento de cada subarray
-    const valuesType = typeData.map(item => Number(item[1])); // Extraemos el segundo elemento de cada subarray
-    
-    // Creamos el objeto 'data' con las etiquetas y valores
+    const labelsType = typeData.map(item => String(item[0])); 
+    const valuesType = typeData.map(item => Number(item[1]));
+
     const dataType = {
       labels: labelsType,
       values: valuesType
     };
 
-    const labelsState = stateData.map(item => String(item[0])); // Extraemos el primer elemento de cada subarray
-    const valuesState = stateData.map(item => Number(item[1])); // Extraemos el segundo elemento de cada subarray
-    
-    // Creamos el objeto 'data' con las etiquetas y valores
+    const labelsState = stateData.map(item => String(item[0]));
+    const valuesState = stateData.map(item => Number(item[1]));
+
     const dataState = {
       labels: labelsState,
       values: valuesState
     };
 
-     const labelsCompliance = complianceData.map(item => String(item[0])); // Extraemos el primer elemento de cada subarray
-    const valuesCompliance = complianceData.map(item => Number(item[1])); // Extraemos el segundo elemento de cada subarray
-    
-    // Creamos el objeto 'data' con las etiquetas y valores
+     const labelsCompliance = complianceData.map(item => String(item[0]));
+    const valuesCompliance = complianceData.map(item => Number(item[1]));
+ 
     const dataCompliance = {
       labels: labelsCompliance,
       values: valuesCompliance
     };
 
-    const labelsActions = actionsData.map(item => String(item[0])); // Extraemos el primer elemento de cada subarray
-    const valuesActions = actionsData.map(item => Number(item[1])); // Extraemos el segundo elemento de cada subarray
-    
-    // Creamos el objeto 'data' con las etiquetas y valores
+    const labelsActions = actionsData.map(item => String(item[0]));
+    const valuesActions = actionsData.map(item => Number(item[1])); 
+
     const dataActions = {
       labels: labelsActions,
       values: valuesActions
     };
 
     const handleClick = (event: MouseEvent) => {
-      // Aquí puedes manejar la lógica de clic en el gráfico
+
       console.log('Clicked on the chart!');
     };
 
@@ -260,51 +255,51 @@ const Stats: React.FC = () => {
         
     </div>
     {ShowRequirements && (
-    <table className="requisitos-tabla">
+    <table className="requisito-actions-tabla">
     <thead>
       <tr>
-        <th className="requisitos-table-headitem" scope="col">
+        <th className="requisito-actions-table-headitem" scope="col">
           Categoria
         </th>
-        <th className="requisitos-table-headitem" scope="col">
+        <th className="requisito-actions-table-headitem" scope="col">
           Grupo
         </th>
-        <th className="requisitos-table-headitem" scope="col">
+        <th className="requisito-actions-table-headitem" scope="col">
           Titulo
         </th>
-        <th className="requisitos-table-headitem" scope="col">
+        <th className="requisito-actions-table-headitem" scope="col">
           Tipo
         </th>
-        <th className="requisitos-table-headitem" scope="col">
+        <th className="requisito-actions-table-headitem" scope="col">
           Cumplimiento
         </th>
-        <th className="requisitos-table-headitem" scope="col">
+        <th className="requisito-actions-table-headitem" scope="col">
           Relevancia
         </th>
-        <th className="requisitos-table-headitem" scope="col">
+        <th className="requisito-actions-table-headitem" scope="col">
           Planta
         </th>
       </tr>
     </thead>
     <tbody>
       {requirements.map((requirement, index) => (
-        <tr className="requisitos-table-row">
-          <td className="requisitos-table-item">
+        <tr className="requisito-actions-table-row">
+          <td className="requisito-actions-table-item">
             {requirement.category.category}
           </td>
-          <td className="requisitos-table-item">
+          <td className="requisito-actions-table-item">
           {requirement.category.tipo === "MA" ? "Medio Ambiente" : 
               requirement.category.tipo === "SSO" ? "Seguridad y Salud Ocupacional" :
             requirement.category.tipo === "OTRO" ? "Otro" : "No tiene"}
           </td>
-          <td className="requisitos-table-item-title" onClick={() =>  handleRequirementClick(`${requirement.requirementId.toString()}`)}>{requirement.title}</td>
+          <td className="requisito-actions-table-item-title" onClick={() =>  handleRequirementClick(`${requirement.requirementId.toString()}`)}>{requirement.title}</td>
          
-          <td className="requisitos-table-item">{requirement.type}</td>
-          <td className="requisitos-table-item">
+          <td className="requisito-actions-table-item">{requirement.type}</td>
+          <td className="requisito-actions-table-item">
             {requirement.compliance}
           </td>
-          <td className="requisitos-table-item">{requirement.relevance}</td>
-          <td className="requisitos-table-item">{requirement.plant.name}</td>
+          <td className="requisito-actions-table-item">{requirement.relevance}</td>
+          <td className="requisito-actions-table-item">{requirement.plant.name}</td>
         </tr>
       ))}
     </tbody>

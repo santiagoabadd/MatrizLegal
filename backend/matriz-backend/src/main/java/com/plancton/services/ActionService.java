@@ -37,7 +37,6 @@ public class ActionService {
     public List<Object[]> getActionsCount(){
         List<Object[]> actionInfoList = new ArrayList<>();
 
-        // Obtener la cantidad de acciones vencidas
         LocalDate currentDate = LocalDate.now();
         int expiredCount = actionRepo.countExpiredActions(currentDate);
         actionInfoList.add(new Object[]{"Expired", expiredCount});

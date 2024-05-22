@@ -72,7 +72,7 @@ public class PlantController {
     }
 
     @PostMapping("/plant")
-    public Plant registerPlant(@RequestBody PlantRequest plantRequest){
+    public Plant registerPlant(@RequestBody PlantRequest plantRequest,@RequestHeader("Authorization") String token){
 
 
 
@@ -83,7 +83,7 @@ public class PlantController {
         LocalDate fechaAlta=plantRequest.getFechaAlta();
         String jurisdiction=plantRequest.getJurisdiction();
 
-        Customer customer=customerService.getById(plantRequest.getCustomerId());
+        Customer customer=userService.getUserByUsername(tokenService.getUsernameFromToken(token)).getCustomer();
 
         Plant newPlant=new Plant(name,description,fechaAlta,jurisdiction,activo,estado,customer);
 

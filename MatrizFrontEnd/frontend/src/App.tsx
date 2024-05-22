@@ -6,19 +6,19 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { RequisitosPage } from "./pages/RequisitosPage";
 import { Landing } from "./pages/Landing";
-import { Plantas } from "./features/ListaPlantas/components/Plantas/Plantas";
 import { PlantasPage } from "./pages/PlantasPage";
 import { UsuariosPage } from "./pages/UsuariosPage";
 import { CrearRequisitoPage } from "./pages/CrearRequisitoPage";
 import { RequisitoPage } from "./pages/RequisitoPage";
 import { NormativasPage } from "./pages/NormativasPage";
-import { Categorias } from "./features/Categorias/components/CategoriasContainer/Categorias";
 import { CrearAccionPage } from "./pages/CrearAccionPage";
 import {VencimientosPage} from "./pages/VencimientosPage";
 import { EditActionPage } from "./pages/EditActionPage";
-import { EditarRequisito } from "./features/EditarRequisito/components/EditarRequisitoContainer/EditarRequisito";
 import { EditarRequisitoPage } from "./pages/EditRequisitoPage";
 import { StatsPage } from "./pages/StatsPage";
+import { CrearNormativaPage } from "./pages/CrearNormativaPage";
+import { CrearPlantPage } from "./pages/CrearPlantPage";
+import { CrearCustomerPage } from "./pages/CrearCustomerPage";
 
 const theme: Theme = {
   colors: {
@@ -51,6 +51,9 @@ export const App = () => {
         <Route path="/plantas" element={<PlantasPage/>} />
         <Route path="/usuarios" element={<UsuariosPage/>} />
         <Route path="/home" element={<Home/>} />
+        <Route path="/crear-planta" element={<CrearPlantPage/>} />
+        <Route path="/crear-normativa" element={<CrearNormativaPage/>} />
+        <Route path="/crear-customer" element={<CrearCustomerPage/>} />
         <Route path="/vencimientos" element={<VencimientosPage/>} />
         <Route path="/accion/:id" element={<CrearAccionPage/>} />
         <Route path="/crear-requisito" element={<CrearRequisitoPage/>} />

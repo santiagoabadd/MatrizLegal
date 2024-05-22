@@ -1,13 +1,16 @@
 .crear-requisito {
   margin-top: 20px;
-  background-color:  #0e1726;
+  background-color:  #2b3048;
   border-radius: 15px;
+  margin-left: 25px;
+  margin-top: 25px;
 }
 
 .crear-requisito-header {
-  padding: 20px;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 17px;
+  padding: 22px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 21px;
+   
 }
 
 .validated-input-select {

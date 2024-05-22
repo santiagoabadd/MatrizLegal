@@ -49,13 +49,12 @@ export const CrearRequisito: React.FC = () => {
 
   const token = localStorage.getItem('token');
 
-  // Configura un objeto de cabecera con el token JWT
   const headers = {
     Authorization: `Bearer ${token}`,
   };
 
-  const [plants, setPlants] = useState<PlantData[]>([]); // Tipo any para la lista de plantas
-  const [categorys, setCategorys] = useState<CategoryData[]>([]); // Tipo any para la lista de categorías
+  const [plants, setPlants] = useState<PlantData[]>([]);
+  const [categorys, setCategorys] = useState<CategoryData[]>([]);
 
 
   const fetchPlants = async () => {

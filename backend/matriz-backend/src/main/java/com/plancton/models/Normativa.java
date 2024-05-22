@@ -15,21 +15,21 @@ public class Normativa {
     @Column(name="normativa_id")
     private Integer normativaId;
 
-    @Column(name="norma",length = 60,nullable = false)
+    @Column(name="norma",length = 240,nullable = false)
     private String norma;
 
-    @Column(name="title",length = 60,nullable = false)
+    @Column(name="title",length = 240,nullable = false)
     private String title;
 
-    @Column(name="authority",length = 60,nullable = false)
+    @Column(name="authority",length = 120,nullable = false)
     private String authority;
 
 
 
-    @Column(name="organism",length = 60,nullable = false)
+    @Column(name="organism",length = 120,nullable = false)
     private String organism;
 
-    @Column(name="jurisdiction",length = 60,nullable = false)
+    @Column(name="jurisdiction",length = 120,nullable = false)
     private String jurisdiction;
 
     @Column(name = "current",nullable = false)

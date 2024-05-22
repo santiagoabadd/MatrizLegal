@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @CrossOrigin("*")
@@ -44,6 +45,22 @@ public class UserController {
 
         Customer customer=service.getUserByUsername(tokenService.getUsernameFromToken(token)).getCustomer();
         return service.getByCystomer(customer);
+
+    }
+
+    @GetMapping("/viewUserRole")
+    public boolean viewUserRole(@RequestHeader("Authorization") String token){
+    boolean response=false;
+        ApplicationUser applicationUser=service.getUserByUsername(tokenService.getUsernameFromToken(token));
+        Set<Role> roles = applicationUser.getRoles();
+        for (Role role : roles) {
+            if (role.getAuthority().equals("ADMIN")) {
+                response =true;
+            }
+        }
+
+
+       return response;
 
     }
 

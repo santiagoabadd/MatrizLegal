@@ -8,7 +8,6 @@ interface CrearAccionProps {
   idRequisito: string;
 }
 export const CrearAccion: React.FC<CrearAccionProps> = ({ idRequisito }) => {
-  // Resto del código del componente se mantiene igual con algunos cambios
   let navigate = useNavigate();
   interface AccionData {
     title: string;
@@ -27,17 +26,15 @@ export const CrearAccion: React.FC<CrearAccionProps> = ({ idRequisito }) => {
     avance: 0,
     responsable: '',
     estado: '',
-    requirementId: '', // Cambio a requirementId en lugar de categoryId y plantId
+    requirementId: '',
   });
 
   const token = localStorage.getItem('token');
 
-  // Configura un objeto de cabecera con el token JWT
   const headers = {
     Authorization: `Bearer ${token}`,
   };
 
-  // Resto del código permanece igual
 
   const onInputChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;

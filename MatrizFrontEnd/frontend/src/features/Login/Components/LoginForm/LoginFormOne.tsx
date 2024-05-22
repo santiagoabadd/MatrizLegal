@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import { ValidatedTextInput } from "../../../../components/ValidatedInput/ValidatedTextInput";
-//import { ModalButton } from "../../../../components/ModalButton/ModalButton";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../../redux/Store";
 import { validatePhone, validEmail } from "../../../../services/validator";

@@ -4,7 +4,7 @@
    
    
     padding: 15px 15px;
-
+    background-color: #2b3048;;
     
     --bs-gutter-x: 1.5rem;
     --bs-gutter-y: 0;
@@ -13,6 +13,17 @@
     margin-top: calc(-1 * var(--bs-gutter-y));
     margin-right: calc(-.5 * var(--bs-gutter-x));
     margin-left: calc(-.5 * var(--bs-gutter-x));
+}
+
+.requisito-container-div{
+    border-radius: 15px;
+    color: rgba(255, 255, 255, 0.7);
+    background-color: #2b3048;
+    
+    padding: 15px 15px;
+    margin-left: 25px;
+    margin-top: 25px;
+    
 }
 
 .requisito-detalle-title {
@@ -221,7 +232,7 @@
     margin-right: 10px;
     padding: 10px;
     background-color: #0e1726;
-    border-bottom: 2px solid black ;
+  
     border-radius: 10px;
     
     
@@ -263,13 +274,14 @@
     min-height: 13vh;
     padding: 10px;
     border-radius: 50%;
-    border: 1px solid black ;
+    border: 1px solid rgb(255, 255, 255) ;
     text-align: center;
 }
 
 span{
     margin-right: 5px;
 }
+
 
 .requisito-detalle-container-relevancia > .requisito-detalle-relevancia{
  

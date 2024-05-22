@@ -15,10 +15,10 @@ public class Action {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="action_id")
     private Integer actionId;
-    @Column(name = "title",length = 60,nullable = false)
+    @Column(name = "title",length = 300,nullable = false)
     private String title;
 
-    @Column(name = "description",length = 60,nullable = false)
+    @Column(name = "description",length = 1000,nullable = false)
     private String description;
 
     @Column(name = "fecha_limite",nullable = false)

@@ -65,7 +65,7 @@ public class CustomerController {
         Set<Rubro> rubros=newCustomer.getRubroList();
 
         for (int id: rubroIds) {
-            // El valor de "numero" será cada elemento del array en cada iteración
+
             rubros.add(serviceRubro.getById(id));
         }
 

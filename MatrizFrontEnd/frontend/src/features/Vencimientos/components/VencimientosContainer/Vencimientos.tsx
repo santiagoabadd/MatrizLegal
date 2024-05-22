@@ -101,11 +101,13 @@ const Vencimientos: React.FC = () => {
       <div className="tabla-dias">
         {diasDelMes.map((dia) => (
           <div key={dia.fecha.toISOString()} className="celda-dia">
-            {dia.numero}
+            <div className="celda-dia-numero">
+              {dia.numero}
+            </div>
+            
           
           <div className="acciones">
           {actions.map((action) => {
-        // Comparar si la fecha de la acción coincide con la fecha del día en el calendario
         const actionDate = new Date(action.fechaLimite);
         const calendarDate = new Date(dia.fecha);
         

@@ -8,8 +8,8 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    background: #060818;
-    border-left: #0e1726 1px solid;
+    background:  #3f4d67;
+   
     border-radius: 5px;
     z-index: 1;
     
@@ -67,10 +67,11 @@
 
 .sidepanel-header > h2{
     color: #e0e6ed;
-    font-family: "Poppins", sans-serif;
+   
     font-size: 20px;
     text-align: center;
     
+    font-weight: 600;
 }
 
 .sidepanel-buttons-bot{
@@ -88,30 +89,33 @@
     padding: 0.4375rem 1.25rem;
     text-shadow: none;
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.7);
-    border: #2b3553 solid 1px;
+    color: #fff;
+    border:none;
     font-weight: normal;
     white-space: normal;
     word-wrap: break-word;
     transition: 0.2s ease-out;
     touch-action: manipulation;
     border-radius: 6px;
+    margin-left: 3px;
     cursor: pointer;
-    background-color: #0e1726;
-    box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.1);
+    background-color:#04a9f5;
+    
     will-change: opacity, transform;
-    transition: all 0.3s ease-out;
+    transition: background-color 0.3s, box-shadow 0.3s;
+  
     -webkit-transition: all 0.3s ease-out;
     margin-bottom: 15px;
 }
 
 .sidepanel-button-1{
+  margin-right: 3px;
     width: 50%;
     padding: 0.4375rem 1.25rem;
     text-shadow: none;
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.7);
-    border: #2b3553 solid 1px;
+    color: #fff;
+    border: none;
     font-weight: normal;
     white-space: normal;
     word-wrap: break-word;
@@ -119,8 +123,8 @@
     touch-action: manipulation;
     border-radius: 6px;
     cursor: pointer;
-    background-color: #0e1726;
-    box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.1);
+    background-color: #f44236;
+ 
     will-change: opacity, transform;
     transition: all 0.3s ease-out;
     -webkit-transition: all 0.3s ease-out;
@@ -133,7 +137,7 @@
     text-shadow: none;
     font-size: 14px;
     color: rgba(255, 255, 255, 0.7);
-    border: #2b3553 solid 1px;
+    border: #37474f solid 1px;
     font-weight: normal;
     white-space: normal;
     word-wrap: break-word;
@@ -141,8 +145,8 @@
     touch-action: manipulation;
     border-radius: 6px;
     cursor: pointer;
-    background-color: #0e1726;
-    box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.1);
+    background-color: #37474f;
+    
     will-change: opacity, transform;
     transition: all 0.3s ease-out;
     -webkit-transition: all 0.3s ease-out;
@@ -156,12 +160,14 @@
 
  .sidepanel-button-2:hover ,.sidepanel-button-3:hover{
     color: #fff !important;
-    background-color: rgb(29, 161, 242) !important;
-    box-shadow: 0 10px 20px -10px rgb(16, 112, 172) !important;
+    background-color: #0386c3; 
+   
   }
 
   .sidepanel-button-1:hover{
+    border: none;
+    box-shadow: none;
     color: #fff !important;
-    background-color: rgb(242, 29, 29) !important;
-    box-shadow: 0 10px 20px -10px rgb(172, 16, 16) !important;
+    background-color: #ea1b0d!important; 
+   
   }

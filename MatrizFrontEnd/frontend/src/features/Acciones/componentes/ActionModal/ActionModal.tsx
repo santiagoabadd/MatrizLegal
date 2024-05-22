@@ -7,7 +7,7 @@ import LaunchIcon from '@mui/icons-material/Launch';
 import { Link } from 'react-router-dom';
 
 interface ActionModalProps {
-    action: ActionObjet; // Define the interface for the action object here
+    action: ActionObjet;
     onClose: () => void;
 }
 
@@ -58,7 +58,7 @@ const ActionModal: React.FC<ActionModalProps> = ({ action, onClose }) => {
     }, []);
 
     const loadRequirement = async () => {
-        const result = await axios.get(`http://localhost:8080/requirement/${action.requirement}`, { headers });
+        const result = await axios.get(`http://localhost:8080/requirement/${action.requirement.requirementId}`, { headers });
         setLoadedRequisito(result.data);
     };
 
@@ -115,7 +115,7 @@ const ActionModal: React.FC<ActionModalProps> = ({ action, onClose }) => {
                     <p>Responsable: {action.responsable}</p>
                     <div className="modal-requirement">
                         <p>Requisito asociado: {loadedRequisito?.title} </p>
-                        <Link to={`/requisito/${action.requirement}`} className="modal-requirement-link">
+                        <Link to={`/requisito/${action.requirement.requirementId}`} className="modal-requirement-link">
                             <LaunchIcon className="modal-requirement-icon" />
                         </Link>
                     </div>
@@ -129,8 +129,8 @@ const ActionModal: React.FC<ActionModalProps> = ({ action, onClose }) => {
                             onChange={handleAvanceChange}
                         />
                         <p>Nuevo Avance: {avance}%</p>
-                        <button onClick={handleGuardarAccion}>Guardar Accion</button>
-                         <button onClick={onClose}>Cerrar</button>
+                        <button className="modal-button2" onClick={handleGuardarAccion}>Guardar Accion</button>
+                         <button className="modal-button2" onClick={onClose}>Cerrar</button>
                          </div>
                     )}
                     <div className="modal-buttons">

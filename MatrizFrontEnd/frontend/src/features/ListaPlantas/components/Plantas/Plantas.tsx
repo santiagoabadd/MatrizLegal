@@ -31,7 +31,6 @@ import "./Plantas.css"
 
   const token = localStorage.getItem('token');
 
-      // Configura un objeto de cabecera con el token JWT
       const headers = {
         Authorization: `Bearer ${token}`,
       };
@@ -64,7 +63,7 @@ import "./Plantas.css"
         <table className="plantas-table">
           <thead>
             <tr>
-              <th className="planta-table-headitem" scope="col">Nombre</th>
+              <th className="planta-table-headitem-name" scope="col">Nombre</th>
               <th className="planta-table-headitem" scope="col">Descripción</th>
               <th className="planta-table-headitem" scope="col">Fecha de Alta</th>
               <th className="planta-table-headitem" scope="col">Jurisdicción</th>
@@ -75,7 +74,7 @@ import "./Plantas.css"
           <tbody>
             {plants.map((plant, index) => (
               <tr className="planta-table-row" key={plant.plantId}>
-                <td className="planta-table-item">{plant.name}</td>
+                <td className="planta-table-item-name">{plant.name}</td>
                 <td className="planta-table-item">{plant.description}</td>
                 <td className="planta-table-item">{plant.fechaAlta instanceof Date
                     ? plant.fechaAlta.toDateString()

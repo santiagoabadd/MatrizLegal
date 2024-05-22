@@ -2,7 +2,13 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    margin-left: 10px;
+    margin-right: 10px;
     margin-top: 20px;
+}
+
+.button-home{
+    margin-left: 25px;
 }
 
 .category-item-icon{

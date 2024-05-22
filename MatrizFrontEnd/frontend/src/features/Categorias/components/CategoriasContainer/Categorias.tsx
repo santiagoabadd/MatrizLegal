@@ -26,13 +26,13 @@ export const Categorias: React.FC<CategoriasProps> = ({ selectedCategory }) => {
         setSelectedCategoryId(categoryId);
         setSelectedCategoryImagenId(categoryImagenId);
         setShowBackButton(true);
-        setShowMainOptions(false); // Ocultar las opciones principales al seleccionar una categoría
+        setShowMainOptions(false); 
       };
 
       const handleBackClick = () => {
-        setSelectedCategoryId(""); // Reiniciar la categoría seleccionada
-        setShowMainOptions(true); // Volver a mostrar las opciones principales
-        setShowBackButton(false); // Ocultar el botón de retroceso
+        setSelectedCategoryId(""); 
+        setShowMainOptions(true); 
+        setShowBackButton(false); 
       };
   
   
@@ -41,10 +41,9 @@ export const Categorias: React.FC<CategoriasProps> = ({ selectedCategory }) => {
 
   const imagesContext = require.context('../../../../assets/iconosCategoria', false, /\.(png|jpe?g|svg)$/);
 
-// Crea un objeto para almacenar las imágenes
+
 const images: { [key: string]: string } = {};
 
-// Itera sobre las imágenes importadas y agrégalas al objeto
 imagesContext.keys().forEach((imagePath: string) => {
   const imageName = imagePath.replace('./', '');
   images[imageName] = imagesContext(imagePath);
@@ -79,10 +78,13 @@ imagesContext.keys().forEach((imagePath: string) => {
   };
   return (
     <div>
+      <div className="button-home">
       {showBackButton && (
         <ArrowBackIcon className="back_button" onClick={handleBackClick}/>
         
-      )}
+      )} 
+      </div>
+     
     {showMainOptions && (
     <div className="categories-container">
       

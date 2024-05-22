@@ -17,7 +17,6 @@ export const Landing: React.FC = () => {
 
   const toggleLogin = () => {
     setLogin(!login);
-    // dispatch(resetUsername);
   };
 
   const toggleForgotPassword = () => {

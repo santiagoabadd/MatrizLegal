@@ -45,11 +45,9 @@ export const RequisitosPage: React.FC = () => {
       
     } else if (jwt !== "" && state.token !== "") {
       console.log("3");
-      // Ambos tokens existen, aquí podría ser útil validarlos o compararlos para asegurar consistencia.
       if (jwt !== state.token) {
         console.log("4");
         setJwt(state.token);
-        // Los tokens son diferentes, manejar esto de acuerdo a la lógica de tu aplicación.
       }
     } else {
      

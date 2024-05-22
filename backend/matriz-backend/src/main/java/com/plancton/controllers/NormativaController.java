@@ -80,7 +80,6 @@ public class NormativaController {
         Set<Category> categories=newNormativa.getCategories();
 
         for (int id: categoriesIds) {
-            // El valor de "numero" será cada elemento del array en cada iteración
             categories.add(serviceCategory.getById(id));
         }
 
@@ -90,8 +89,7 @@ public class NormativaController {
         Integer []rubroIds=normativaRequest.getRubrosIds();
         Set<Rubro> rubros=newNormativa.getRubroList();
 
-        for (int id: rubroIds) {
-            // El valor de "numero" será cada elemento del array en cada iteración
+         for (int id: rubroIds) {
             rubros.add(serviceRubro.getById(id));
         }
 
@@ -114,7 +112,6 @@ public class NormativaController {
         Set<Rubro> rubros=new HashSet<>();
 
         for (int id: rubroIds) {
-            // El valor de "numero" será cada elemento del array en cada iteración
             rubros.add(serviceRubro.getById(id));
         }
 
@@ -126,7 +123,7 @@ public class NormativaController {
 
         for (Customer cliente : clientesConRubro) {
 
-            serviceCustomer.updateCustomer(cliente.getCustomerId(),normativaRequest.getNorma()); // Actualiza el cliente con la nueva asignación
+            serviceCustomer.updateCustomer(cliente.getCustomerId(),normativaRequest.getNorma());
        }
 
 
@@ -148,16 +145,14 @@ public class NormativaController {
     @PostMapping("/normativa/{normativaId}/categorias/{categoriaId}")
     public ResponseEntity<String> agregarCategoriaANormativa(@PathVariable Integer normativaId, @PathVariable Integer categoriaId) {
         try {
-            // Obtén la normativa y la categoría por sus IDs
+
             Normativa normativa = service.getById(2L);
             Category categoria = serviceCategory.getById(2);
 
             if (normativa == null || categoria == null) {
-                // Maneja el caso en el que la normativa o la categoría no existen
                 return ResponseEntity.notFound().build();
             }
 
-            // Asocia la categoría a la normativa
 
             normativa.getCategories().add(categoria);
 

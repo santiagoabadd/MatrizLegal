@@ -14,22 +14,22 @@ export const CategoriasMenu: React.FC = () => {
 
     const handleCategoryClick = (categoryName: string) => {
         setSelectedCategory(categoryName);
-        setShowMainOptions(false); // Ocultar las opciones principales al seleccionar una categoría
+        setShowMainOptions(false); 
         setShowBackButton(true);
       };
 
       const handleBackClick = () => {
-        setSelectedCategory(""); // Reiniciar la categoría seleccionada
-        setShowMainOptions(true); // Volver a mostrar las opciones principales
-        setShowBackButton(false); // Ocultar el botón de retroceso
+        setSelectedCategory("");
+        setShowMainOptions(true);
+        setShowBackButton(false); 
       };
 
   const imagesContext = require.context('../../../../assets/iconosCategoria', false, /\.(png|jpe?g|svg)$/);
 
-// Crea un objeto para almacenar las imágenes
+
 const images: { [key: string]: string } = {};
 
-// Itera sobre las imágenes importadas y agrégalas al objeto
+
 imagesContext.keys().forEach((imagePath: string) => {
   const imageName = imagePath.replace('./', '');
   images[imageName] = imagesContext(imagePath);
@@ -48,10 +48,13 @@ imagesContext.keys().forEach((imagePath: string) => {
   
   return (
     <div>
-        {showBackButton && (
+      <div className="button-home">
+      {showBackButton && (
             <HomeIcon className="home_button" onClick={handleBackClick}/>
         
       )}
+      </div>
+        
 
     {showMainOptions && (
     <div className="categories-container">

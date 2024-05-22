@@ -115,7 +115,6 @@ public class ActionController {
             requirementRepository.save(requirement);
             return requirement;
         } else {
-            // Manejar el caso en el que no se encuentra el requisito
             return null;
         }
     }

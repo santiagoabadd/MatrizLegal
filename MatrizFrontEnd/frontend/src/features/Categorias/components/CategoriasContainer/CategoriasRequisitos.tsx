@@ -21,10 +21,8 @@ export const CategoriasRequisitos: React.FC<CategoriasProps> = ({ selectedCatego
 
     const imagesContext = require.context('../../../../assets/iconosCategoria', false, /\.(png|jpe?g|svg)$/);
 
-    // Crea un objeto para almacenar las imágenes
     const images: { [key: string]: string } = {};
 
-    // Itera sobre las imágenes importadas y agrégalas al objeto
     imagesContext.keys().forEach((imagePath: string) => {
         const imageName = imagePath.replace('./', '');
         images[imageName] = imagesContext(imagePath);

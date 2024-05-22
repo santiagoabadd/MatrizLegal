@@ -58,7 +58,6 @@ export const EditarRequisito: React.FC<EditarRequisitoProps> = ({idRequirement})
 
   const token = localStorage.getItem('token');
 
-  // Configura un objeto de cabecera con el token JWT
   const headers = {
     Authorization: `Bearer ${token}`,
   };

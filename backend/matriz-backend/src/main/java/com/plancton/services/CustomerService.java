@@ -39,7 +39,7 @@ public class CustomerService {
 
     public Customer getById(Integer id){
         Customer customer = customerRepo.getById(id);
-        // Forzar la carga de las colecciones asociadas
+
 
 
         return customer;

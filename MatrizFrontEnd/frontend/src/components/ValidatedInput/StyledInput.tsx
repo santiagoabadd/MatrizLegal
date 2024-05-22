@@ -11,6 +11,7 @@ export const StyledInputBox = styled.div<StyledInputProps>`
   border-radius: 5px;
   width: 100%;
   height: 56px;
+  background-color:#0e1726;
   border: ${(props) => determineStyledInputBorder(props)};
 `;
 

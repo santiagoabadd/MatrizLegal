@@ -2,16 +2,12 @@ import React, { useState } from "react";
 
 import { Modal } from "../../../../components/Modal/Modal";
 import "./LoginModal.css";
-//import { LoginModalTop } from "../LoginModalTop/LoginModalTop";
-//import { LoginFormOne } from "../LoginForms/LoginFormOne";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../redux/Store";
 import { LoginFormTwo } from "../LoginForm/LoginFormTwo";
 import { LoginFormOne } from "../LoginForm/LoginFormOne";
 import { LoginButton } from "../LoginButtons/LoginButton";
 import HasuLogo from "../../../../assets/hasuLogo.png";
-//import { LoginFormTwo } from "../LoginForms/LoginFormTwo";
-//import { LoginButton } from "../LoginButton/LoginButton";
 interface LoginModalProps {
   toggleModal: () => void;
   toggleRegister: () => void;

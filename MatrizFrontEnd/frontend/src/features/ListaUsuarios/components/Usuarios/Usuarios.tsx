@@ -32,7 +32,6 @@ import "./Usuarios.css"
 
   const token = localStorage.getItem('token');
 
-      // Configura un objeto de cabecera con el token JWT
       const headers = {
         Authorization: `Bearer ${token}`,
       };
@@ -58,7 +57,7 @@ import "./Usuarios.css"
         <table className="usuarios-table">
           <thead>
             <tr>
-              <th className="usuario-table-headitem" scope="col">Nombre</th>
+              <th className="usuario-table-headitem-name" scope="col">Nombre</th>
               <th className="usuario-table-headitem" scope="col">Apellido</th>
               <th className="usuario-table-headitem" scope="col">Username</th>
               <th className="usuario-table-headitem" scope="col">Mail</th>
@@ -69,7 +68,7 @@ import "./Usuarios.css"
           <tbody>
             {users.map((user, index) => (
               <tr className="usuario-table-row" key={user.userId}>
-                <td className="usuario-table-item">{user.firstName}</td>
+                <td className="usuario-table-item-name">{user.firstName}</td>
                 <td className="usuario-table-item">{user.lastName}</td>
                 <td className="usuario-table-item">{user.username}</td>
                 <td className="usuario-table-item">{user.email}</td>

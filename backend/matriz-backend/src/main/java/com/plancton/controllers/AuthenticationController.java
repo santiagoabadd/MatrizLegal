@@ -52,7 +52,7 @@ public class AuthenticationController {
         return new ResponseEntity<String>("The email you provided is already in use", HttpStatus.CONFLICT);
     }
 
-    // go to http://localhost:8080/auth/register
+
     @PostMapping("/register")
     public ApplicationUser registerUser(@RequestBody RegistrationObject ro){
         return userService.registerUser(ro);

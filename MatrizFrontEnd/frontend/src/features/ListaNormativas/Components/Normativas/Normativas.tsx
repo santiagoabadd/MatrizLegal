@@ -21,7 +21,6 @@ export const Normativas: React.FC = () => {
   const [filtroAuthority, setfiltroAuthority] = useState('');
   
 
-  //const { id } = useParams();
 
   useEffect(() => {
     loadNormativas();
@@ -30,7 +29,7 @@ export const Normativas: React.FC = () => {
   
   const token = localStorage.getItem('token');
 
-  // Configura un objeto de cabecera con el token JWT
+
   const headers = {
     Authorization: `Bearer ${token}`,
   };
@@ -47,7 +46,6 @@ export const Normativas: React.FC = () => {
             partialOrganismo: filtroOrganismo,
             partialJurisdiccion: filtroJurisdiccion,
             partialAuthority: filtroAuthority
-             // Si es null, envía una cadena vacía
           },
           headers,
         }
@@ -145,7 +143,7 @@ export const Normativas: React.FC = () => {
       <table className="normativas-tabla">
         <thead>
           <tr>
-            <th className="normativa-table-headitem" scope="col">
+            <th className="normativa-table-headitem-norma" scope="col">
               Norma
             </th>
             <th className="normativa-table-headitem" scope="col">
@@ -169,7 +167,7 @@ export const Normativas: React.FC = () => {
         <tbody>
           {normativas.map((normativa, index) => (
             <tr className="normativa-table-row" key={index}>
-              <td className="normativa-table-item">{normativa.norma}</td>
+              <td className="normativa-table-item-norma">{normativa.norma}</td>
               <td className="normativa-table-item">{normativa.title}</td>
               <td className="normativa-table-item">{normativa.authority}</td>
               <td className="normativa-table-item">{normativa.organism}</td>

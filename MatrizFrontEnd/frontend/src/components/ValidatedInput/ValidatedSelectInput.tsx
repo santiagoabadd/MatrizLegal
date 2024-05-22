@@ -50,10 +50,6 @@ export const ValidatedSelectInput: React.FC<ValidatedSelectInputProps> = ({
 
 
 
-//const ValidatedSelectInput = () => {
-  
-    
-//};
 
 return (
 

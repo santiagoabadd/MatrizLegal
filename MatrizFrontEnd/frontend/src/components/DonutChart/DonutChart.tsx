@@ -5,8 +5,8 @@ import Chart from 'chart.js/auto';
 
 interface DonutChartProps {
   data: { labels: string[]; values: number[] };
-  colors?: string[]; // Colors prop for customizing the colors
-  handleChartClick?: (event: MouseEvent) => void; // Custom click handler
+  colors?: string[];
+  handleChartClick?: (event: MouseEvent) => void;
 }
 
 const DonutChart: React.FC<DonutChartProps> = ({ data, colors = [], handleChartClick }) => {
@@ -41,6 +41,7 @@ const DonutChart: React.FC<DonutChartProps> = ({ data, colors = [], handleChartC
         options: {
           plugins: {
             legend: {
+              display :true,
               labels: {
                 font: {
                   size: 13,

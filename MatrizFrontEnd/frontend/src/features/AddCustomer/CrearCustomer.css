@@ -1,0 +1,199 @@
+.crear-customer {
+    margin-top: 20px;
+    background-color:  #2b3048;
+    border-radius: 15px;
+    margin-left: 25px;
+    margin-top: 25px;
+  }
+
+  select::-webkit-scrollbar {
+    width: 5px;
+
+  }
+  select::-webkit-scrollbar-thumb {
+    background: #2b3553; /* Color del pulgar */
+    border-radius: 40px;
+   
+  }
+
+  select option:checked {
+    background-color:  rgb(14 23 38);
+    color:  rgb(29, 161, 242);
+   
+}
+  
+  .crear-customer-header {
+    padding: 22px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 21px;
+   
+    
+  }
+  
+  .validated-input-select-m {
+    padding-left: 5px;
+    color: rgb(170, 184, 194);
+    height: fit-content;
+    width: 100%;
+    height: 56px;
+    border-radius: 5px;
+    border: 1px solid rgb(43, 53, 83);
+    background-color: rgb(14 23 38);
+  }
+
+  
+  
+  .validated-input-select-m:focus-within{
+    height: fit-content;
+  width: 100%;
+  height: 200px;
+  border-radius: 5px;
+  border: 1px solid rgb(29, 161, 242);
+  }
+  
+  .validated-input-select-m:focus-visible{
+    height: fit-content;
+  width: 100%;
+  height: 200px;
+  border-radius: 5px;
+  
+  outline: none;
+  }
+  
+  
+  
+  /* Estilo cuando se pasa el cursor sobre una opción */
+  
+  
+  .crear-customers-form {
+    padding: 15px;
+  }
+  .crear-customers-button {
+    display: flex;
+    
+    justify-content: center;
+  
+  }
+  
+  .crear-customers-button > button{
+    padding: 0.4375rem 1.25rem;
+    text-shadow: none;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    border: #2b3553 solid 1px;
+    font-weight: normal;
+    white-space: normal;
+    word-wrap: break-word;
+    transition: 0.2s ease-out;
+    touch-action: manipulation;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #0e1726;
+    box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.1);
+    will-change: opacity, transform;
+    transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    margin-bottom: 15px;
+  }
+  
+  .crear-customers-button > button:hover {
+    color: #fff !important;
+    background-color: rgb(29, 161, 242) !important;
+    box-shadow: 0 10px 20px -10px rgb(16, 112, 172) !important;
+  }
+  
+  .crear-customers-group {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  @media(min-width:800px){
+    .crear-customers-unit-1 {
+      width: 100%;
+    }
+    .crear-customers-unit-2 {
+      width: 100%;
+    }
+    .crear-customers-unit-3 {
+      width: 100%;
+    }
+    .crear-customers-unit-4 {
+      width: 100%;
+    }
+    .crear-customers-unit-5 {
+      width: 100%;
+    }
+    .crear-customers-unit-6{
+      width: 100%;
+    }
+    .crear-customers-unit-7 {
+      width: 100%;
+    }
+    .crear-customers-unit-8 {
+      width: 100%;
+    }
+  }
+  
+  @media(min-width:700px){
+    .crear-customers-unit-1 {
+      width: 100%;
+    }
+    .crear-customers-unit-2 {
+      width: 100%;
+    }
+    .crear-customers-unit-3 {
+      width: 100%;
+    }
+    .crear-customers-unit-4 {
+      width: 100%;
+    }
+    .crear-customers-unit-5 {
+      width: 100%;
+    }
+    .crear-customers-unit-6{
+      width: 100%;
+    }
+    .crear-customers-unit-7 {
+      width: 100%;
+    }
+    .crear-customers-unit-8 {
+      width: 100%;
+    }
+    }
+  
+  
+  @media(min-width:1000px){
+    .crear-customers-unit-1 {
+      width: 50%;
+    }
+    .crear-customers-unit-2 {
+      width: 50%;
+    }
+    .crear-customers-unit-3 {
+      width: 33.3%;
+    }
+    .crear-customers-unit-4 {
+      width: 33.3%;
+    }
+    .crear-customers-unit-5 {
+      width: 33.3%;
+    }
+    .crear-customers-unit-6{
+      width: 50%;
+    }
+    .crear-customers-unit-7 {
+      width: 50%;
+    }
+    .crear-customers-unit-8 {
+      width: 50%;
+    }
+  }
+  
+  
+  .crear-customers-group > div {
+    padding-left: 7px;
+    margin-bottom: 20px;
+  }
+  
+  
+  
