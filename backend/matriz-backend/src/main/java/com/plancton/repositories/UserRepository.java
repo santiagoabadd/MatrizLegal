@@ -18,4 +18,7 @@ public interface UserRepository extends JpaRepository<ApplicationUser,Integer> {
     List<ApplicationUser> getByCustomer(@Param("customer") Customer customer);
     Optional<ApplicationUser> findByUsername(String username);
     Optional<ApplicationUser> findByEmailOrPhoneOrUsername(String email,String phone,String username);
+
+    Optional<ApplicationUser> findByEmail(String email);
+
 }

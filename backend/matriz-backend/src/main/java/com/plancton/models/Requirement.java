@@ -14,11 +14,11 @@ public class Requirement {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="requirement_id")
     private Integer requirementId;
-    @Column(name="title",length = 240,nullable = false)
+    @Column(name="title",length = 240)
     private String title;
     @Column(name="actual_state")
     private String actualState;
-    @Column(name="requirement",length = 340,nullable = false)
+    @Column(name="requirement",length = 340)
     private String requirement;
     @Column(name="type")
     private String type;
@@ -40,6 +40,15 @@ public class Requirement {
     @OneToMany(mappedBy = "requirement",cascade= CascadeType.ALL,orphanRemoval = true,fetch = FetchType.EAGER)
     Set<Action> actions;
 
+    @Column(name ="last_reviewer",length = 60)
+    private String lastActionReviewer;
+
+    @Column(name ="last_review",length = 60)
+    private String lastReview;
+
+
+
+
 
 
 
@@ -58,6 +67,24 @@ public class Requirement {
         this.customer = customer;
         this.category = category;
         this.plant = plant;
+        this.lastActionReviewer="No evaluado";
+        this.lastReview="Review";
+    }
+
+    public String getLastReview() {
+        return lastReview;
+    }
+
+    public void setLastReview(String lastReview) {
+        this.lastReview = lastReview;
+    }
+
+    public String getLastActionReviewer() {
+        return lastActionReviewer;
+    }
+
+    public void setLastActionReviewer(String lastActionReviewer) {
+        this.lastActionReviewer = lastActionReviewer;
     }
 
     public Integer getRequirementId() {

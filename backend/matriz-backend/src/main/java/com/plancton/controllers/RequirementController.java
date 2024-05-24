@@ -44,7 +44,13 @@ public class RequirementController {
 
     }
 
+    @GetMapping("/requirement/category/hea/{id}")boolean hasExpiredAction(@PathVariable Integer id,@RequestHeader("Authorization") String token){
 
+        Customer customer=serviceUser.getUserByUsername(tokenService.getUsernameFromToken(token)).getCustomer();
+        Category category1=serviceCategory.getById(id);
+        return service.hasExpiredActionByCategory(category1,customer);
+
+    }
 
 
     @GetMapping("/requirement/category/{id}")

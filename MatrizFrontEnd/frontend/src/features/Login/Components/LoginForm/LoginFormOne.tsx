@@ -49,7 +49,7 @@ export const LoginFormOne: React.FC<LoginFormOneProps> = ({
 
   return (
     <div className="login-form-one-container">
-      <h1 className="login-form-header">Loguearse en Hasu </h1>
+      <h1 className="login-form-header">Loguearse en LegalMatrix Pro</h1>
       <div className="login-form-one-divider">
         <div className="login-form-one-line"></div>
         <p className="login-form-one-or">
@@ -86,9 +86,10 @@ export const LoginFormOne: React.FC<LoginFormOneProps> = ({
     
 
       <p className="login-form-one-text color-gray">
-        No tienes una cuenta? Contactanos wevap32433@cabose.com
+        ¿No tienes una cuenta? 
+        <br></br> 
         <span className="link color-blue" onClick={() => {}}>
-          Aqui
+        Contactanos Aqui
         </span>
       </p>
     </div>

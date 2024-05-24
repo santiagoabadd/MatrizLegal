@@ -6,6 +6,7 @@ import com.plancton.exceptions.EmailFailedToSendException;
 import com.plancton.exceptions.IncorrectVerificationCodeException;
 import com.plancton.exceptions.UserDoesNotExistException;
 import com.plancton.models.ApplicationUser;
+import com.plancton.models.Customer;
 import com.plancton.models.LoginResponse;
 import com.plancton.models.RegistrationObject;
 import com.plancton.services.MailService;
@@ -54,7 +55,10 @@ public class AuthenticationController {
 
 
     @PostMapping("/register")
-    public ApplicationUser registerUser(@RequestBody RegistrationObject ro){
+    public ApplicationUser registerUser(@RequestBody RegistrationObject ro,@RequestHeader("Authorization") String token){
+        Customer customer=userService.getUserByUsername(tokenService.getUsernameFromToken(token)).getCustomer();
+
+        ro.setCustomerId(customer.getCustomerId());
         return userService.registerUser(ro);
     }
 

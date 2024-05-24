@@ -33,9 +33,13 @@ public class Action {
     @Column(name = "estado",length = 60,nullable = false)
     private String estado;
 
+
     @ManyToOne
     @JoinColumn(name="requirement_id")
     Requirement requirement;
+
+
+
 
     public Action(){}
     public Action(String title, String description, LocalDate fechaLimite, Integer avance, String responsable, String estado) {
@@ -46,6 +50,8 @@ public class Action {
         this.responsable = responsable;
         this.estado = estado;
     }
+
+
 
     public Integer getActionId() {
         return actionId;

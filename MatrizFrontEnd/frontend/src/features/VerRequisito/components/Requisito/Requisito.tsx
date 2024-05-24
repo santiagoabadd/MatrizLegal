@@ -34,6 +34,8 @@ export const Requisito: React.FC<CategoriasProps> = ({ idRequisito }) => {
     type: string;
     compliance: string;
     relevance: string;
+    lastActionReviewer:string;
+    lastReview:string;
     
   }
 
@@ -79,7 +81,7 @@ export const Requisito: React.FC<CategoriasProps> = ({ idRequisito }) => {
 
   return (
     <div className="requisito-container-div">
-      {loadedRequisito ? ( // Comprueba si loadedRequisito no es nulo
+      {loadedRequisito ? ( 
 
         <div className="requisito-detalles">
 
@@ -109,7 +111,7 @@ export const Requisito: React.FC<CategoriasProps> = ({ idRequisito }) => {
           <div className="requisito-detalle-container-cumplimiento">
             <div className="requisito-detalle-cumplimiento">
 
-              <div className="requisito-valor-cumplimiento">
+              <div className={`requisito-valor-cumplimiento-${loadedRequisito.compliance}`}>
                 <span className="requisito-valor">{loadedRequisito.compliance}</span>
               </div>
 
@@ -136,11 +138,11 @@ export const Requisito: React.FC<CategoriasProps> = ({ idRequisito }) => {
                 <span className="requisito-valor">{loadedRequisito.relevance}</span>
               </div>
               <div className="requisito-detalle-content">
-                <span className="requisito-label">Revisor:</span>
+                <span className="requisito-label">Revisor: {loadedRequisito.lastActionReviewer}</span>
 
               </div>
               <div className="requisito-detalle-content">
-                <span className="requisito-label">Ultima revision:</span>
+                <span className="requisito-label">Ultima revision: {loadedRequisito.lastReview}</span>
 
               </div>
 

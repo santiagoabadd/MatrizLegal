@@ -11,11 +11,179 @@
     margin-left: 25px;
 }
 
-.category-item-icon{
-    background-color: #2b3553;
+.category-item-icon-OTRO{
+    background-color: #dc9823;
     width: 13vh;
     height: 13vh;
-    border: 2px solid #ccc; 
+    border: 4px solid #ccc; 
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.category-item-icon-MA{
+    background-color: #45784b;
+    width: 13vh;
+    height: 13vh;
+    border: 4px solid #ccc; 
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.category-item-icon-SSO{
+    background-color: #1a697a;
+    width: 13vh;
+    height: 13vh;
+    border: 4px solid #ccc; 
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.category-item-icon-SSO-Total{
+    background-color: #1a697a;
+    width: 13vh;
+    height: 13vh;
+    border: 4px solid #008000; 
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.category-item-icon-SSO-No.aplica{
+    background-color: #1a697a;
+    width: 13vh;
+    height: 13vh;
+    border: 4px solid #ccc; 
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.category-item-icon-SSO-No.evaluado{
+    background-color: #1a697a;
+    width: 13vh;
+    height: 13vh;
+    border: 4px solid #f4ad42; 
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.category-item-icon-SSO-Parcial{
+    background-color: #1a697a;
+    width: 13vh;
+    height: 13vh;
+    border: 4px solid #c4ab00; 
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.category-item-icon-MA-Total{
+    background-color: #45784b;
+    width: 13vh;
+    height: 13vh;
+    border: 4px solid #008000; 
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.category-item-icon-MA-No.aplica{
+    background-color: #45784b;
+    width: 13vh;
+    height: 13vh;
+    border: 4px solid #ccc; 
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.category-item-icon-MA-No.evaluado{
+    background-color: #45784b;
+    width: 13vh;
+    height: 13vh;
+    border: 4px solid #f4ad42; 
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.category-item-icon-MA-Parcial{
+    background-color: #45784b;
+    width: 13vh;
+    height: 13vh;
+    border: 4px solid #c4ab00; 
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.category-item-icon-OTRO-Total{
+    background-color: #dc9823;
+    width: 13vh;
+    height: 13vh;
+    border: 4px solid #008000; 
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.category-item-icon-OTRO-No.aplica{
+    background-color: #dc9823;
+    width: 13vh;
+    height: 13vh;
+    border: 4px solid #ccc; 
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.category-item-icon-OTRO-No.evaluado{
+    background-color: #dc9823;
+    width: 13vh;
+    height: 13vh;
+    border: 4px solid #f4ad42; 
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.category-item-icon-OTRO-Parcial{
+    background-color: #dc9823;
+    width: 13vh;
+    height: 13vh;
+    border: 4px solid #c4ab00; 
     border-radius: 50%;
     display: flex;
     justify-content: center;

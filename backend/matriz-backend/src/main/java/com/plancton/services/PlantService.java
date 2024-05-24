@@ -4,12 +4,14 @@ import com.plancton.models.Customer;
 import com.plancton.models.Plant;
 import com.plancton.models.Requirement;
 import com.plancton.repositories.PlantRepository;
+import com.plancton.repositories.RequirementRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,12 +19,30 @@ import java.util.Optional;
 public class PlantService {
     PlantRepository plantRepo;
     @Autowired
+    RequirementRepository requirementRepository;
+    @Autowired
     public PlantService(PlantRepository plantRepo){
         this.plantRepo=plantRepo;
     }
 
     public Plant registerPlant(Plant object) {
         try{
+
+
+            List<Requirement> originalRequirements = requirementRepository.findAllWithPlantAndCategory();
+
+            List<Requirement> copiedRequirements = new ArrayList<>();
+            for (Requirement originalRequirement : originalRequirements) {
+                Requirement copiedRequirement = new Requirement();
+                copiedRequirement.setPlant(originalRequirement.getPlant());
+                copiedRequirement.setCategory(originalRequirement.getCategory());
+                // Copiar otros campos si es necesario
+                // No copiar acciones
+                copiedRequirements.add(copiedRequirement);
+            }
+
+
+
             return plantRepo.save(object);
         }catch (Exception e){
             e.printStackTrace();

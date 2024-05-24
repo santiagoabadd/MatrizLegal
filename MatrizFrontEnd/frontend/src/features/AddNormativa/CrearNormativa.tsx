@@ -217,7 +217,7 @@ interface RubrosData {
 
           <div className="crear-normativas-button">
             <button type="submit" className="btn btn-primary">
-              Añadir Requerimiento
+              Añadir Normativa
             </button>
           </div>
 

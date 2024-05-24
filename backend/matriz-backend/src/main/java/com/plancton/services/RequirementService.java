@@ -1,10 +1,8 @@
 package com.plancton.services;
 
-import com.plancton.models.Category;
-import com.plancton.models.Customer;
-import com.plancton.models.Plant;
-import com.plancton.models.Requirement;
+import com.plancton.models.*;
 import com.plancton.repositories.CustomerRepository;
+import com.plancton.repositories.PlantRepository;
 import com.plancton.repositories.RequirementRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -13,13 +11,19 @@ import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
 public class RequirementService {
     RequirementRepository requirementRepo;
+    @Autowired
+    PlantRepository plantRepository;
+    @Autowired
+    CustomerRepository customerRepo;
     @Autowired
     public  RequirementService(RequirementRepository requirementRepo){
         this.requirementRepo=requirementRepo;
@@ -54,7 +58,48 @@ public class RequirementService {
 
 
     public Requirement getById(Integer id){
-        return  requirementRepo.getById(id);
+        Requirement newRequirement=requirementRepo.getById(id);
+        Set<Action> actions = newRequirement.getActions();
+        if (actions != null && !actions.isEmpty()) {
+
+            Action lastAction = actions.stream().reduce((first, second) -> second).orElse(null);
+            if (lastAction != null) {
+                newRequirement.setLastActionReviewer(lastAction.getResponsable());
+                newRequirement.setLastReview(lastAction.getFechaLimite().toString());
+            }
+            this.updateRequirement(newRequirement.getRequirementId(),newRequirement);
+        }
+        return  newRequirement;
+    }
+
+    public void copyRequirementsToNewClient(int clientId,int plantId) {
+        List<Requirement> originalRequirements = requirementRepo.findAllWithPlantAndCategoryDefault();
+        List<Requirement> copiedRequirements = new ArrayList<>();
+        for (Requirement originalRequirement : originalRequirements) {
+            Requirement copiedRequirement = new Requirement();
+            copiedRequirement.setLastReview("No evaluado");
+            copiedRequirement.setLastActionReviewer("No evaluado");
+            copiedRequirement.setCompliance(originalRequirement.getCompliance());
+            copiedRequirement.setRequirement(originalRequirement.getRequirement());
+            copiedRequirement.setActualState(originalRequirement.getActualState());
+            copiedRequirement.setRelevance(originalRequirement.getRelevance());
+            copiedRequirement.setTitle(originalRequirement.getTitle());
+            copiedRequirement.setType(originalRequirement.getType());
+            copiedRequirement.setPlant(plantRepository.getById(plantId));
+            copiedRequirement.setCategory(originalRequirement.getCategory());
+            copiedRequirements.add(copiedRequirement);
+        }
+
+        Optional<Customer> optionalNewClient = customerRepo.findById(clientId);
+        if (optionalNewClient.isPresent()) {
+            Customer newClient = optionalNewClient.get();
+            for (Requirement copiedRequirement : copiedRequirements) {
+                copiedRequirement.setCustomer(newClient);
+                registerRequirement(copiedRequirement);
+            }
+        } else {
+            throw new IllegalArgumentException("Cliente no encontrado con ID: " + clientId);
+        }
     }
 
     public List<Requirement> getRequirementsByCustomer(Customer customer){
@@ -74,6 +119,12 @@ public class RequirementService {
     public List<Requirement> getRequirementsByCategory(Category category,Customer customer){
         return requirementRepo.getByCustomerAndCategory(customer,category);
     }
+
+    public boolean hasExpiredActionByCategory(Category category,Customer customer){
+        return requirementRepo.hasExpiredActionByCategoryAndCustomer(category,customer);
+    }
+
+
 
     public List<Object[]> getNumberOfRequirementPerCategory(){
         return requirementRepo.countRequirementsByCategory();
@@ -103,6 +154,7 @@ public class RequirementService {
                     requirement.setRelevance(newRequirement.getRelevance());
                     requirement.setTitle(newRequirement.getTitle());
                     requirement.setType(newRequirement.getType());
+                    requirement.setLastActionReviewer(newRequirement.getLastActionReviewer());
 
 
                     return requirementRepo.save(requirement);

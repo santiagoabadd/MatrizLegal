@@ -91,7 +91,7 @@ imagesContext.keys().forEach((imagePath: string) => {
       {categories.map((category, index) => (
 
         <div onClick={() =>  handleCategoryClick(`${category.categoryId.toString()}`,`${category.imageId}`)} className="category-item">
-          <div className="category-item-icon"><img className="category-item-icon-img" src={images[`${category.imageId}.png`]} alt="" /></div>
+          <div className={`category-item-icon-${selectedCategory}`}><img className="category-item-icon-img" src={images[`${category.imageId}.png`]} alt="" /></div>
           <div className="category-item-title">{category.category}</div>
 
 
@@ -103,7 +103,7 @@ imagesContext.keys().forEach((imagePath: string) => {
 
     </div>
     )}
-    {selectedCategoryId && <CategoriasRequisitos selectedCategoryId={selectedCategoryId} selectedCategoryIdImagen={selectedCategoryImagenId} />}
+    {selectedCategoryId && <CategoriasRequisitos selectedCategoryId={selectedCategoryId} selectedCategoryIdImagen={selectedCategoryImagenId} selectedCategory={selectedCategory} />}
     </div>
   );
 };

@@ -7,7 +7,7 @@ export const NavBar: React.FC = () => {
   return (
     <div className="navbar-container">
       <div className="navbar-logo-container">
-        <img src={HasuLogo} className="navbar-logo" />
+        <h1 className="navbar-logo-title">Matriz Legal</h1>
       </div>
       <div className="navbar-items-list">
         <div className="navbar-item"></div>

@@ -1,9 +1,9 @@
 .requisito-detalles{
-    border-radius: 5px;
+    border-radius: 15px;
     color: #e0e6ed;
    
    
-    padding: 15px 15px;
+    padding: 20px 20px;
     background-color: #2b3048;;
     
     --bs-gutter-x: 1.5rem;
@@ -18,7 +18,7 @@
 .requisito-container-div{
     border-radius: 15px;
     color: rgba(255, 255, 255, 0.7);
-    background-color: #2b3048;
+    background-color: #1f2037;
     
     padding: 15px 15px;
     margin-left: 25px;
@@ -46,6 +46,7 @@
 .add-action-button{
     padding: 0.4375rem 1.25rem;
     text-shadow: none;
+    margin-left: 5px;
     font-size: 14px;
     color: rgba(255, 255, 255, 0.7);
     border: #2b3553 solid 1px;
@@ -71,8 +72,10 @@
   }
 
 .requisito-valor-title {
+    font-size: 1.5rem;
     font-weight: 100;
-    padding: 20px 20px;
+    padding: px 20px;
+    text-transform: uppercase;
 
 }
 
@@ -264,7 +267,7 @@
     background-color: #0e1726;
 }
 
-.requisito-valor-cumplimiento{
+.requisito-valor-cumplimiento-No.aplica{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -277,6 +280,49 @@
     border: 1px solid rgb(255, 255, 255) ;
     text-align: center;
 }
+
+.requisito-valor-cumplimiento-No.evaluado{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 13vh;
+    height: 13vh;
+    min-width: 13vh;
+    min-height: 13vh;
+    padding: 10px;
+    border-radius: 50%;
+    border: 5px solid #f4ad42 ;
+    text-align: center;
+}
+
+.requisito-valor-cumplimiento-Total{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 13vh;
+    height: 13vh;
+    min-width: 13vh;
+    min-height: 13vh;
+    padding: 10px;
+    border-radius: 50%;
+    border: 5px solid #008000 ;
+    text-align: center;
+}
+
+.requisito-valor-cumplimiento-Parcial{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 13vh;
+    height: 13vh;
+    min-width: 13vh;
+    min-height: 13vh;
+    padding: 10px;
+    border-radius: 50%;
+    border: 5px solid #c4ab00 ;
+    text-align: center;
+}
+
 
 span{
     margin-right: 5px;
@@ -342,5 +388,5 @@ span{
   }
   
   .action-table-row {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 5px solid rgba(255, 255, 255, 0.1);
   }

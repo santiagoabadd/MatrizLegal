@@ -62,15 +62,15 @@ imagesContext.keys().forEach((imagePath: string) => {
      
 
         <div onClick={() => handleCategoryClick("MA")} className="category-item-menu">
-          <div className="category-item-icon-menu"><img className="category-item-icon-img" src={images["1.png"]} alt="" /></div>
+          <div className="category-item-icon-menu1"><img className="category-item-icon-img" src={images["1.png"]} alt="" /></div>
           <div className="category-item-title-menu">Medio Ambiente</div>
         </div>
         <div onClick={() => handleCategoryClick("SSO")} className="category-item-menu">
-          <div className="category-item-icon-menu"><img className="category-item-icon-img" src={images["3.png"]} alt="" /></div>
+          <div className="category-item-icon-menu2"><img className="category-item-icon-img" src={images["3.png"]} alt="" /></div>
           <div className="category-item-title-menu">Seguridad y salud ocupacional</div>
         </div>
         <div onClick={() => handleCategoryClick("OTRO")} className="category-item-menu">
-          <div className="category-item-icon-menu"><img className="category-item-icon-img" src={images["2.png"]} alt="" /></div>
+          <div className="category-item-icon-menu3"><img className="category-item-icon-img" src={images["2.png"]} alt="" /></div>
           <div className="category-item-title-menu">Otros</div>
         </div>
 

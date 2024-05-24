@@ -3,6 +3,10 @@ import "./Vencimientos.css"
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import ActionModal from "../../../Acciones/componentes/ActionModal/ActionModal";
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
+import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 
 interface Dia {
   numero: number;
@@ -87,9 +91,57 @@ const Vencimientos: React.FC = () => {
     
     <div className="calendario-container">
       <div className="header">
-        <button className='button-header' onClick={() => cambiarMes(-1)}>&lt;</button>
-        <h2>{mesActual.toLocaleString('default', { month: 'long', year: 'numeric' })}</h2>
-        <button className='button-header' onClick={() => cambiarMes(1)}>&gt;</button>
+        <div className="header-buttons-1">
+        
+            
+            
+        <button className='button-header-1'  onClick={() => cambiarMes(-12)}>
+        <KeyboardDoubleArrowLeftIcon
+              sx={{
+            
+                width: "30px"
+             
+              }}
+            />
+        </button>    
+        <button className='button-header-2' onClick={() => cambiarMes(-1)}>
+        <KeyboardArrowLeftIcon
+              sx={{
+             
+                width: "30px"
+             
+              }}
+            />
+        </button>
+            
+        <button className='button-header-3' onClick={() => cambiarMes(1)}>
+        <KeyboardArrowRightIcon
+              sx={{
+               
+                width: "30px"
+                
+              }}
+            />
+        </button>
+
+        <button className='button-header-4' onClick={() => cambiarMes(+12)}>
+        <KeyboardDoubleArrowRightIcon
+              sx={{
+              
+                width: "30px"
+               
+              }}
+            />
+        </button>   
+        </div>
+        
+        <h2 className='header-title'>{mesActual.toLocaleString('default', { month: 'long', year: 'numeric' })}</h2>
+        
+        <div className="header-buttons-2">
+        <button className='button-header-1' onClick={() => cambiarMes(-1)}>day</button>
+        <button className='button-header-2' onClick={() => cambiarMes(1)}>week</button>
+        <button className='button-header-4' onClick={() => cambiarMes(1)}>month</button>
+        </div>
       </div>
       <div className="dias-semana">
       {nombresDiasSemana.map((dia) => (

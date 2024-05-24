@@ -6,10 +6,7 @@ import com.plancton.models.Plant;
 import com.plancton.models.PlantRequest;
 import com.plancton.models.Requirement;
 import com.plancton.repositories.PlantRepository;
-import com.plancton.services.CustomerService;
-import com.plancton.services.PlantService;
-import com.plancton.services.TokenService;
-import com.plancton.services.UserService;
+import com.plancton.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +27,9 @@ public class PlantController {
 
     @Autowired
     private PlantService service;
+
+    @Autowired
+    private RequirementService serviceR;
 
     @Autowired
     private UserService userService;
@@ -76,6 +76,7 @@ public class PlantController {
 
 
 
+
         boolean activo=plantRequest.isActive();
         String description=plantRequest.getDescription();
         String estado=plantRequest.getEstado();
@@ -87,7 +88,15 @@ public class PlantController {
 
         Plant newPlant=new Plant(name,description,fechaAlta,jurisdiction,activo,estado,customer);
 
-        return service.registerPlant(newPlant);
+        Plant registeredPlant = service.registerPlant(newPlant);
+
+        int plantId = registeredPlant.getPlantId();
+        int clientId = customer.getCustomerId();
+
+        serviceR.copyRequirementsToNewClient(clientId, plantId);
+        // Obtener el ID del cliente asociado
+
+        return registeredPlant;
     }
 
 

@@ -233,7 +233,7 @@ const Stats: React.FC = () => {
     <div className="stats-container-grid">
         <div className="stat-item">
             <h1 className="stat-item-title">Requisitos por categoria</h1>
-            <DonutChart data={dataCategory} colors={["#87fa69","#abfa69","#b7fa69"]}/>
+            <DonutChart data={dataCategory} colors={["#87fa69","#699dfa","#ffd95c"]}/>
         </div>
         <div className="stat-item">
         <h1 className="stat-item-title">Requisitos por Tipo</h1>
@@ -241,11 +241,11 @@ const Stats: React.FC = () => {
         </div>
         <div className="stat-item">
         <h1 className="stat-item-title">Estado de evaluación</h1>
-            <DonutChart data={dataState} colors={["#a5fa69","#fa6969","#69cefa"]}/>
+            <DonutChart data={dataState} colors={["#6e568b","#cabed8","#69cefa"]}/>
         </div>
         <div className="stat-item">
         <h1 className="stat-item-title">Estado de cumplimiento</h1>
-            <DonutChart data={dataCompliance} colors={["#92ff5c","#f9ff5c","#5cd4ff","#ff5c5c"]}/>
+            <DonutChart data={dataCompliance} colors={["#5cd4ff","#92ff5c","#ff5c5c","#f9ff5c"]}/>
         </div>
         <div className="stat-item">
         <h1 className="stat-item-title">Acciones relacionadas</h1>

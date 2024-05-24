@@ -12,16 +12,24 @@
   z-index: 2;
   
 }
+.navbar-logo-title{
+  font-size: 12px;
+    font-weight: 600;
+    
+    position: relative;
+    text-transform: uppercase;
+    color: #e8edf7;
+}
 .navbar-logo-container {
   height: 100%;
   width: 100px;
   padding: 10px 0px;
   padding-bottom: 10px;
-  background-position: cover;
+  
 }
 
 .navbar-logo {
-  width: 72px;
+  
   
 
 }

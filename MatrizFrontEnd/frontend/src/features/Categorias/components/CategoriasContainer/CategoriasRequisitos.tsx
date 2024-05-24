@@ -6,14 +6,16 @@ import "./Categorias.css";
 interface CategoriasProps {
     selectedCategoryId: string;
     selectedCategoryIdImagen: string;
+    selectedCategory:string;
 }
 
 interface requisitoObjeto {
     title: string;
     requirementId: number;
+    compliance:string;
 }
 
-export const CategoriasRequisitos: React.FC<CategoriasProps> = ({ selectedCategoryId, selectedCategoryIdImagen }) => {
+export const CategoriasRequisitos: React.FC<CategoriasProps> = ({ selectedCategoryId, selectedCategoryIdImagen,selectedCategory }) => {
 
 
 
@@ -61,7 +63,7 @@ export const CategoriasRequisitos: React.FC<CategoriasProps> = ({ selectedCatego
             {requirements.map((requirement, index) => (
                 <Link to={`/requisito/${requirement.requirementId}`}>
                 <div className="category-item">
-          <div className="category-item-icon"><img className="category-item-icon-img" src={images[`${selectedCategoryIdImagen}.png`]} alt="" /></div>
+          <div className={`category-item-icon-${selectedCategory}-${requirement.compliance}`}><img className="category-item-icon-img" src={images[`${selectedCategoryIdImagen}.png`]} alt="" /></div>
           <div className="category-item-title">{requirement.title}</div>
 
 

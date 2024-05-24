@@ -32,6 +32,21 @@ public interface RequirementRepository extends JpaRepository<Requirement,Integer
     @Query("SELECT r FROM Requirement r JOIN FETCH r.plant JOIN FETCH r.category")
     List<Requirement> findAllWithPlantAndCategory();
 
+    @Query("SELECT r FROM Requirement r JOIN FETCH r.plant JOIN FETCH r.category WHERE r.id < 224")
+    List<Requirement> findAllWithPlantAndCategoryDefault();
+
+    @Query("SELECT CASE " +
+            "    WHEN COUNT(a) > 0 " +
+            "    THEN TRUE " +
+            "    ELSE FALSE " +
+            "END " +
+            "FROM Requirement r " +
+            "JOIN r.actions a " +
+            "WHERE r.category = :category " +
+            "AND r.customer = :customer " +
+            "AND a.fechaLimite < CURRENT_DATE")
+    boolean hasExpiredActionByCategoryAndCustomer(@Param("category") Category category, @Param("customer") Customer customer);
+
     @Query("SELECT c.actualState, COUNT(c) FROM Requirement c GROUP BY c.actualState")
     List<Object[]> countRequirementsByState();
 

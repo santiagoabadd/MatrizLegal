@@ -45,7 +45,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({
     <Modal
       topContent={
         <div className="login-top-content">
-          <img src={HasuLogo} className="login-top-logo" />
+          
         </div>
       }
       content={

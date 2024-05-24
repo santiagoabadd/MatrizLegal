@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @RestController
@@ -46,6 +47,12 @@ public class UserController {
         Customer customer=service.getUserByUsername(tokenService.getUsernameFromToken(token)).getCustomer();
         return service.getByCystomer(customer);
 
+    }
+
+    @GetMapping("/user/{id}")
+    Optional<ApplicationUser> getUserByEmail(@PathVariable String id){
+
+        return service.getUserByEmail(id);
     }
 
     @GetMapping("/viewUserRole")
