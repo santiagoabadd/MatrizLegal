@@ -12,10 +12,14 @@ Este seria el home de la aplicacion, seleccionando una de estas tres categorias,
 Una vez seleccionada una sub categoria se le muestran todos los requisitos asociados a esta. El color del circulo muestra el estado de evaluación del requisito.
 [![9.png](https://i.postimg.cc/mgW89yRX/9.png)](https://postimg.cc/svKYdSM7)
 
-Asi se ve una accion.
 [![4.png](https://i.postimg.cc/T3bB2kRq/4.png)](https://postimg.cc/G4cXqxTH)
+Asi se ve una accion, desde esta misma podra navegar al requisito relacionado si se requiere.
 [![5.png](https://i.postimg.cc/KYrVBR31/5.png)](https://postimg.cc/hJvpq4rn)
+
+Este es el panel de vencimientos.
 [![2.png](https://i.postimg.cc/65yDgWgP/2.png)](https://postimg.cc/ZCz7ySTP)
+
+Tablero de control.
 [![3.png](https://i.postimg.cc/N0wSK1Fh/3.png)](https://postimg.cc/TKCCS5nQ)
 [![6.png](https://i.postimg.cc/28MPDpfS/6.png)](https://postimg.cc/SJLZ6vsB)
 [![8.png](https://i.postimg.cc/zvxCLTzB/8.png)](https://postimg.cc/m1FzJzFf)
