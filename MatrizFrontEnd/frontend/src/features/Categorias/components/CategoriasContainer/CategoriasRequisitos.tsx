@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import "./Categorias.css";
 
+
 interface CategoriasProps {
     selectedCategoryId: string;
     selectedCategoryIdImagen: string;
@@ -21,15 +22,19 @@ export const CategoriasRequisitos: React.FC<CategoriasProps> = ({ selectedCatego
 
 
 
-    const imagesContext = require.context('../../../../assets/iconosCategoria', false, /\.(png|jpe?g|svg)$/);
+   // Contexto de importación de todas las imágenes de la carpeta `iconosCategoria`
+const imagesContext = require.context('../../../../assets/iconosCategoria', false, /\.(png|jpe?g|svg)$/);
 
-    const images: { [key: string]: string } = {};
+// Objeto para almacenar las rutas de las imágenes, donde la clave es el nombre del archivo y el valor es la ruta de la imagen
+const images: { [key: string]: string } = {};
 
-    imagesContext.keys().forEach((imagePath: string) => {
-        const imageName = imagePath.replace('./', '');
-        images[imageName] = imagesContext(imagePath);
-    });
-
+// Iterar sobre las claves del contexto de importación y llenar el objeto images con el nombre del archivo y la ruta de la imagen
+imagesContext.keys().forEach((imagePath: string) => {
+    // Obtener el nombre del archivo eliminando './' del inicio del nombre de la ruta
+    const imageName = imagePath.replace('./', '');
+    // Almacenar la ruta de la imagen en el objeto images usando el nombre del archivo como clave
+    images[imageName] = imagesContext(imagePath);
+});
 
     const [requirements, setRequirements] = useState<requisitoObjeto[]>([]);
 

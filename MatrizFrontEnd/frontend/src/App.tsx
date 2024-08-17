@@ -19,6 +19,7 @@ import { StatsPage } from "./pages/StatsPage";
 import { CrearNormativaPage } from "./pages/CrearNormativaPage";
 import { CrearPlantPage } from "./pages/CrearPlantPage";
 import { CrearCustomerPage } from "./pages/CrearCustomerPage";
+import { RegusterUserPage } from "./pages/RegisterUserPage";
 
 const theme: Theme = {
   colors: {
@@ -56,6 +57,7 @@ export const App = () => {
         <Route path="/crear-customer" element={<CrearCustomerPage/>} />
         <Route path="/vencimientos" element={<VencimientosPage/>} />
         <Route path="/accion/:id" element={<CrearAccionPage/>} />
+        <Route path="/register-user/" element={<RegusterUserPage/>}/>
         <Route path="/crear-requisito" element={<CrearRequisitoPage/>} />
         <Route path="/requisito/:id" element={<RequisitoPage/>} />
         <Route path="/accion/edit/:id" element={<EditActionPage/>} />

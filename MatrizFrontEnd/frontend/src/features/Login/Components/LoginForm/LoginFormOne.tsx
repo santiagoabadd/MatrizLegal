@@ -73,13 +73,13 @@ export const LoginFormOne: React.FC<LoginFormOneProps> = ({
       )}
       <div className="login-form-one-button-container">
         <button className="login-form-one-button" onClick={findUsername}>
-          Find
+          Buscar
         </button>
       </div>
 
       <div className="login-form-one-button-container">
         <button className="login-form-one-button" onClick={findUsername}>
-          Olvidaste tu contraseña?
+          ¿Olvidaste tu contraseña?
         </button>
       </div>
 

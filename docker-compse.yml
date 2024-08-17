@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  app_ml:
+    build: matriz-backend
+    mem_limit: 512m
+    ports:
+      - "8080:8080"
+    environment:
+      DB_URL: jdbc:mysql://matriz_leg:3306/plancton?createDatabaseIfNotExist=true&serverTimezone=UTC
+      DB_USER_NAME: root
+      DB_PASSWORD: jilguero1
+    restart: always
+    depends_on:
+      matriz_leg:
+          condition: service_healthy
+  matriz_leg:
+    image: mysql:8.0.33 
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: jilguero1
+      MYSQL_PASSWORD: jilguero1
+      MYSQL_DATABASE: plancton
+    restart: always
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 10

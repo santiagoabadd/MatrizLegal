@@ -11,6 +11,7 @@ import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
 import ApartmentIcon from "@mui/icons-material/Apartment";
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import LeaderboardIcon from '@mui/icons-material/Leaderboard';
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import HasuLogo from '../../../../assets/hasuLogo.png'
 
 export const SideBarMenu: React.FC = () => {
@@ -156,6 +157,20 @@ export const SideBarMenu: React.FC = () => {
             />
             Plantas
           </Link>
+          <h1 className="side-bar-header-2">
+         
+         Cliente Administrador
+       </h1>
+          <Link to="/register-user" className="side-bar-button-container">
+            <GroupAddIcon
+              sx={{
+                marginRight: "10px",
+                width: "20px",
+                marginLeft: "7px"
+              }}
+            />
+            Registrar Usuario
+          </Link>
           {isAdmin && (
             <Link to="/crear-planta" className="side-bar-button-container">
               <AddToPhotosIcon
@@ -168,6 +183,10 @@ export const SideBarMenu: React.FC = () => {
               Crear Planta
             </Link>
           )}
+          <h1 className="side-bar-header-2">
+         
+         Web Master Panel
+       </h1>
           {isAdmin && (
             <Link to="/crear-customer" className="side-bar-button-container">
               <AddToPhotosIcon
